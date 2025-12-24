@@ -1,0 +1,2255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ganaderiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="animal">
+          <Key>
+            <PropertyRef Name="aniCod" />
+          </Key>
+          <Property Name="aniCod" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="aniCaravana" Type="varchar" MaxLength="20" />
+          <Property Name="razaCod" Type="int" />
+          <Property Name="aniSexo" Type="char" MaxLength="1" />
+          <Property Name="aniFchNac" Type="date" />
+          <Property Name="aniEstado" Type="char" MaxLength="1" />
+          <Property Name="aniFchIns" Type="datetime" />
+          <Property Name="aniUsrIns" Type="int" />
+          <Property Name="aniFchUpd" Type="datetime" />
+          <Property Name="estCod" Type="int" />
+          <Property Name="aniUsrUpd" Type="int" />
+          <Property Name="rv" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="auditoria">
+          <Key>
+            <PropertyRef Name="audId" />
+          </Key>
+          <Property Name="audId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="audTabla" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="audAccion" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="audRegistroId" Type="nvarchar" MaxLength="128" />
+          <Property Name="audFecha" Type="datetime2" Precision="3" Nullable="false" />
+          <Property Name="audUsuario" Type="nvarchar" MaxLength="256" />
+          <Property Name="audLoginSql" Type="nvarchar" MaxLength="256" />
+          <Property Name="audHost" Type="nvarchar" MaxLength="128" />
+          <Property Name="audApp" Type="nvarchar" MaxLength="256" />
+          <Property Name="audDetalleJson" Type="nvarchar(max)" />
+          <Property Name="usuCod" Type="int" />
+        </EntityType>
+        <EntityType Name="barrios">
+          <Key>
+            <PropertyRef Name="barriosCod" />
+          </Key>
+          <Property Name="barriosCod" Type="int" Nullable="false" />
+          <Property Name="barriosNombre" Type="varchar" MaxLength="50" />
+          <Property Name="ciudCod" Type="int" />
+        </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="catCod" />
+          </Key>
+          <Property Name="catCod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="catDesc" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ciudades">
+          <Key>
+            <PropertyRef Name="ciudCod" />
+          </Key>
+          <Property Name="ciudCod" Type="int" Nullable="false" />
+          <Property Name="ciudNombre" Type="varchar" MaxLength="50" />
+          <Property Name="depaCod" Type="int" />
+        </EntityType>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="clieCod" />
+          </Key>
+          <Property Name="clieCod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clieNombre" Type="varchar" MaxLength="50" />
+          <Property Name="clieMarca" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="comprasCab">
+          <Key>
+            <PropertyRef Name="ccCod" />
+          </Key>
+          <Property Name="ccCod" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="provCod" Type="int" />
+          <Property Name="ccFch" Type="date" />
+          <Property Name="estCod" Type="int" />
+          <Property Name="rv" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="comprasDet">
+          <Key>
+            <PropertyRef Name="cdCod" />
+          </Key>
+          <Property Name="cdCod" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ccCod" Type="int" />
+          <Property Name="cdCantidad" Type="int" />
+          <Property Name="cdUnitario" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="cdTotal" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="rv" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="departamentos">
+          <Key>
+            <PropertyRef Name="depaCod" />
+          </Key>
+          <Property Name="depaCod" Type="int" Nullable="false" />
+          <Property Name="depaNombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="establecimiento">
+          <Key>
+            <PropertyRef Name="estCod" />
+          </Key>
+          <Property Name="estCod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="estNombre" Type="varchar" MaxLength="50" />
+          <Property Name="estBarrio" Type="int" />
+        </EntityType>
+        <EntityType Name="gastosCab">
+          <Key>
+            <PropertyRef Name="gcCod" />
+          </Key>
+          <Property Name="gcCod" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="gcDescripcion" Type="varchar" MaxLength="50" />
+          <Property Name="gcFecha" Type="date" />
+          <Property Name="gcMonto" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="impCod" Type="int" />
+          <Property Name="provCod" Type="int" />
+          <Property Name="catCod" Type="int" />
+          <Property Name="rv" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="gastosDet">
+          <Key>
+            <PropertyRef Name="gdCod" />
+          </Key>
+          <Property Name="gdCod" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="gcCod" Type="int" />
+          <Property Name="gdItem" Type="varchar" MaxLength="50" />
+          <Property Name="gdCantidad" Type="int" />
+          <Property Name="gdUnitario" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="rv" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="gestacion">
+          <Key>
+            <PropertyRef Name="preCod" />
+          </Key>
+          <Property Name="preCod" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="aniCodMadre" Type="int" />
+          <Property Name="preFchMontura" Type="date" />
+          <Property Name="preFchConfirma" Type="date" />
+          <Property Name="preFchparto" Type="date" />
+          <Property Name="preEstado" Type="char" MaxLength="2" />
+          <Property Name="estCod" Type="int" />
+          <Property Name="aniCodPadre" Type="int" />
+          <Property Name="rv" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="impuesto">
+          <Key>
+            <PropertyRef Name="impCod" />
+          </Key>
+          <Property Name="impCod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="impDesc" Type="varchar" MaxLength="50" />
+          <Property Name="impDivisor" Type="int" />
+        </EntityType>
+        <EntityType Name="nacimiento">
+          <Key>
+            <PropertyRef Name="nacCod" />
+          </Key>
+          <Property Name="nacCod" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="aniCodMadre" Type="int" />
+          <Property Name="nacFch" Type="date" />
+          <Property Name="nacSexo" Type="char" MaxLength="1" />
+          <Property Name="nacEstado" Type="char" MaxLength="1" />
+          <Property Name="aniCodCria" Type="int" />
+          <Property Name="tsCod" Type="int" />
+          <Property Name="rv" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="profesional">
+          <Key>
+            <PropertyRef Name="profCod" />
+          </Key>
+          <Property Name="profCod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="profNombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="proveedor">
+          <Key>
+            <PropertyRef Name="provCod" />
+          </Key>
+          <Property Name="provCod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="provNombre" Type="varchar" MaxLength="50" />
+          <Property Name="provMarca" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="raza">
+          <Key>
+            <PropertyRef Name="razaCod" />
+          </Key>
+          <Property Name="razaCod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="razaDesc" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="retiro">
+          <Key>
+            <PropertyRef Name="retiCod" />
+          </Key>
+          <Property Name="retiCod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="retiNombre" Type="varchar" MaxLength="50" />
+          <Property Name="estCod" Type="int" />
+        </EntityType>
+        <EntityType Name="retiroDet">
+          <Key>
+            <PropertyRef Name="retiDetCod" />
+          </Key>
+          <Property Name="retiDetCod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="retiCod" Type="int" />
+          <Property Name="aniCod" Type="int" />
+          <Property Name="taCod" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tipoAlimentacion">
+          <Key>
+            <PropertyRef Name="taCod" />
+          </Key>
+          <Property Name="taCod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="taNombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tipoServicio">
+          <Key>
+            <PropertyRef Name="tsCod" />
+          </Key>
+          <Property Name="tsCod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tsNombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tipoVacuna">
+          <Key>
+            <PropertyRef Name="tvCod" />
+          </Key>
+          <Property Name="tvCod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tvNombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="usuCod" />
+          </Key>
+          <Property Name="usuCod" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="usuLogin" Type="varchar" MaxLength="15" />
+          <Property Name="usuNombre" Type="varchar" MaxLength="30" />
+          <Property Name="usuPass" Type="varchar" MaxLength="50" />
+          <Property Name="usuDescripcion" Type="varchar" MaxLength="50" />
+          <Property Name="usuRol" Type="varchar" MaxLength="20" />
+          <Property Name="usuEmail" Type="varchar" MaxLength="100" />
+          <Property Name="usuFchCrea" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="usuFchMod" Type="datetime2" Precision="0" />
+          <Property Name="usuActivo" Type="int" />
+        </EntityType>
+        <EntityType Name="vacunacion">
+          <Key>
+            <PropertyRef Name="vacCod" />
+          </Key>
+          <Property Name="vacCod" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="vacFch" Type="date" />
+          <Property Name="tvCod" Type="int" />
+          <Property Name="vacDosis" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="profCod" Type="int" />
+          <Property Name="aniCod" Type="int" />
+          <Property Name="rv" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ventasCab">
+          <Key>
+            <PropertyRef Name="vcCod" />
+          </Key>
+          <Property Name="vcCod" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="vcFch" Type="date" />
+          <Property Name="clieCod" Type="int" />
+          <Property Name="impCod" Type="int" />
+          <Property Name="estCod" Type="int" />
+          <Property Name="rv" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ventasDet">
+          <Key>
+            <PropertyRef Name="vdCod" />
+          </Key>
+          <Property Name="vdCod" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="vcCod" Type="int" />
+          <Property Name="vdCantidad" Type="int" />
+          <Property Name="vdUnitario" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="vdTotal" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="vdPesoProm" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="aniCod" Type="int" />
+          <Property Name="rv" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vision_dispositivo">
+          <Key>
+            <PropertyRef Name="dispId" />
+          </Key>
+          <Property Name="dispId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="tipo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="serie" Type="nvarchar" MaxLength="100" />
+          <Property Name="ubicacion" Type="nvarchar" MaxLength="200" />
+          <Property Name="activo" Type="bit" Nullable="false" />
+          <Property Name="rowversion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vision_modelo">
+          <Key>
+            <PropertyRef Name="modId" />
+          </Key>
+          <Property Name="modId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="version" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="enfoque" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="hash" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="fechaCarga" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="rowversion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vision_pesaje">
+          <Key>
+            <PropertyRef Name="pesId" />
+          </Key>
+          <Property Name="pesId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="aniCod" Type="int" Nullable="false" />
+          <Property Name="fecha" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="pesoKg" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="confianza" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="metodo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="dispId" Type="int" />
+          <Property Name="modId" Type="int" />
+          <Property Name="imgPath" Type="nvarchar" MaxLength="260" />
+          <Property Name="medidasJson" Type="nvarchar(max)" />
+          <Property Name="notas" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK_animal_establecimiento">
+          <End Role="establecimiento" Type="Self.establecimiento" Multiplicity="0..1" />
+          <End Role="animal" Type="Self.animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="establecimiento">
+              <PropertyRef Name="estCod" />
+            </Principal>
+            <Dependent Role="animal">
+              <PropertyRef Name="estCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_animal_raza">
+          <End Role="raza" Type="Self.raza" Multiplicity="0..1" />
+          <End Role="animal" Type="Self.animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="raza">
+              <PropertyRef Name="razaCod" />
+            </Principal>
+            <Dependent Role="animal">
+              <PropertyRef Name="razaCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_auditoria_usuario">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+          <End Role="auditoria" Type="Self.auditoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="usuCod" />
+            </Principal>
+            <Dependent Role="auditoria">
+              <PropertyRef Name="usuCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_barrios_ciudades">
+          <End Role="ciudades" Type="Self.ciudades" Multiplicity="0..1" />
+          <End Role="barrios" Type="Self.barrios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudades">
+              <PropertyRef Name="ciudCod" />
+            </Principal>
+            <Dependent Role="barrios">
+              <PropertyRef Name="ciudCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ciudades_departamentos">
+          <End Role="departamentos" Type="Self.departamentos" Multiplicity="0..1" />
+          <End Role="ciudades" Type="Self.ciudades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departamentos">
+              <PropertyRef Name="depaCod" />
+            </Principal>
+            <Dependent Role="ciudades">
+              <PropertyRef Name="depaCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comprasCab_establecimiento">
+          <End Role="establecimiento" Type="Self.establecimiento" Multiplicity="0..1" />
+          <End Role="comprasCab" Type="Self.comprasCab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="establecimiento">
+              <PropertyRef Name="estCod" />
+            </Principal>
+            <Dependent Role="comprasCab">
+              <PropertyRef Name="estCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comprasCab_proveedor">
+          <End Role="proveedor" Type="Self.proveedor" Multiplicity="0..1" />
+          <End Role="comprasCab" Type="Self.comprasCab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proveedor">
+              <PropertyRef Name="provCod" />
+            </Principal>
+            <Dependent Role="comprasCab">
+              <PropertyRef Name="provCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comprasDet_comprasCab">
+          <End Role="comprasCab" Type="Self.comprasCab" Multiplicity="0..1" />
+          <End Role="comprasDet" Type="Self.comprasDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comprasCab">
+              <PropertyRef Name="ccCod" />
+            </Principal>
+            <Dependent Role="comprasDet">
+              <PropertyRef Name="ccCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_establecimiento_barrios">
+          <End Role="barrios" Type="Self.barrios" Multiplicity="0..1" />
+          <End Role="establecimiento" Type="Self.establecimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="barrios">
+              <PropertyRef Name="barriosCod" />
+            </Principal>
+            <Dependent Role="establecimiento">
+              <PropertyRef Name="estBarrio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_gastosCab_categoria">
+          <End Role="categoria" Type="Self.categoria" Multiplicity="0..1" />
+          <End Role="gastosCab" Type="Self.gastosCab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="catCod" />
+            </Principal>
+            <Dependent Role="gastosCab">
+              <PropertyRef Name="catCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_gastosCab_impuesto">
+          <End Role="impuesto" Type="Self.impuesto" Multiplicity="0..1" />
+          <End Role="gastosCab" Type="Self.gastosCab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="impuesto">
+              <PropertyRef Name="impCod" />
+            </Principal>
+            <Dependent Role="gastosCab">
+              <PropertyRef Name="impCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_gastosCab_proveedor">
+          <End Role="proveedor" Type="Self.proveedor" Multiplicity="0..1" />
+          <End Role="gastosCab" Type="Self.gastosCab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proveedor">
+              <PropertyRef Name="provCod" />
+            </Principal>
+            <Dependent Role="gastosCab">
+              <PropertyRef Name="provCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_gastosDet_gastosCab">
+          <End Role="gastosCab" Type="Self.gastosCab" Multiplicity="0..1" />
+          <End Role="gastosDet" Type="Self.gastosDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gastosCab">
+              <PropertyRef Name="gcCod" />
+            </Principal>
+            <Dependent Role="gastosDet">
+              <PropertyRef Name="gcCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_gestacion_animal">
+          <End Role="animal" Type="Self.animal" Multiplicity="0..1" />
+          <End Role="gestacion" Type="Self.gestacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="animal">
+              <PropertyRef Name="aniCod" />
+            </Principal>
+            <Dependent Role="gestacion">
+              <PropertyRef Name="aniCodMadre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_gestacion_animal1">
+          <End Role="animal" Type="Self.animal" Multiplicity="0..1" />
+          <End Role="gestacion" Type="Self.gestacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="animal">
+              <PropertyRef Name="aniCod" />
+            </Principal>
+            <Dependent Role="gestacion">
+              <PropertyRef Name="aniCodPadre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_gestacion_establecimiento">
+          <End Role="establecimiento" Type="Self.establecimiento" Multiplicity="0..1" />
+          <End Role="gestacion" Type="Self.gestacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="establecimiento">
+              <PropertyRef Name="estCod" />
+            </Principal>
+            <Dependent Role="gestacion">
+              <PropertyRef Name="estCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nacimiento_animal2">
+          <End Role="animal" Type="Self.animal" Multiplicity="0..1" />
+          <End Role="nacimiento" Type="Self.nacimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="animal">
+              <PropertyRef Name="aniCod" />
+            </Principal>
+            <Dependent Role="nacimiento">
+              <PropertyRef Name="aniCodMadre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nacimiento_animal3">
+          <End Role="animal" Type="Self.animal" Multiplicity="0..1" />
+          <End Role="nacimiento" Type="Self.nacimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="animal">
+              <PropertyRef Name="aniCod" />
+            </Principal>
+            <Dependent Role="nacimiento">
+              <PropertyRef Name="aniCodCria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nacimiento_tipoServicio">
+          <End Role="tipoServicio" Type="Self.tipoServicio" Multiplicity="0..1" />
+          <End Role="nacimiento" Type="Self.nacimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoServicio">
+              <PropertyRef Name="tsCod" />
+            </Principal>
+            <Dependent Role="nacimiento">
+              <PropertyRef Name="tsCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pesaje_animal">
+          <End Role="animal" Type="Self.animal" Multiplicity="1" />
+          <End Role="vision_pesaje" Type="Self.vision_pesaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="animal">
+              <PropertyRef Name="aniCod" />
+            </Principal>
+            <Dependent Role="vision_pesaje">
+              <PropertyRef Name="aniCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pesaje_disp">
+          <End Role="vision_dispositivo" Type="Self.vision_dispositivo" Multiplicity="0..1" />
+          <End Role="vision_pesaje" Type="Self.vision_pesaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vision_dispositivo">
+              <PropertyRef Name="dispId" />
+            </Principal>
+            <Dependent Role="vision_pesaje">
+              <PropertyRef Name="dispId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pesaje_mod">
+          <End Role="vision_modelo" Type="Self.vision_modelo" Multiplicity="0..1" />
+          <End Role="vision_pesaje" Type="Self.vision_pesaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vision_modelo">
+              <PropertyRef Name="modId" />
+            </Principal>
+            <Dependent Role="vision_pesaje">
+              <PropertyRef Name="modId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_retiro_establecimiento">
+          <End Role="establecimiento" Type="Self.establecimiento" Multiplicity="0..1" />
+          <End Role="retiro" Type="Self.retiro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="establecimiento">
+              <PropertyRef Name="estCod" />
+            </Principal>
+            <Dependent Role="retiro">
+              <PropertyRef Name="estCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_retiroDet_animal">
+          <End Role="animal" Type="Self.animal" Multiplicity="0..1" />
+          <End Role="retiroDet" Type="Self.retiroDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="animal">
+              <PropertyRef Name="aniCod" />
+            </Principal>
+            <Dependent Role="retiroDet">
+              <PropertyRef Name="aniCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_retiroDet_retiro">
+          <End Role="retiro" Type="Self.retiro" Multiplicity="0..1" />
+          <End Role="retiroDet" Type="Self.retiroDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="retiro">
+              <PropertyRef Name="retiCod" />
+            </Principal>
+            <Dependent Role="retiroDet">
+              <PropertyRef Name="retiCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_retiroDet_tipoAlimentacion">
+          <End Role="tipoAlimentacion" Type="Self.tipoAlimentacion" Multiplicity="0..1" />
+          <End Role="retiroDet" Type="Self.retiroDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoAlimentacion">
+              <PropertyRef Name="taCod" />
+            </Principal>
+            <Dependent Role="retiroDet">
+              <PropertyRef Name="taCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vacunacion_animal">
+          <End Role="animal" Type="Self.animal" Multiplicity="0..1" />
+          <End Role="vacunacion" Type="Self.vacunacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="animal">
+              <PropertyRef Name="aniCod" />
+            </Principal>
+            <Dependent Role="vacunacion">
+              <PropertyRef Name="aniCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vacunacion_profesional">
+          <End Role="profesional" Type="Self.profesional" Multiplicity="0..1" />
+          <End Role="vacunacion" Type="Self.vacunacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profesional">
+              <PropertyRef Name="profCod" />
+            </Principal>
+            <Dependent Role="vacunacion">
+              <PropertyRef Name="profCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vacunacion_tipoVacuna">
+          <End Role="tipoVacuna" Type="Self.tipoVacuna" Multiplicity="0..1" />
+          <End Role="vacunacion" Type="Self.vacunacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoVacuna">
+              <PropertyRef Name="tvCod" />
+            </Principal>
+            <Dependent Role="vacunacion">
+              <PropertyRef Name="tvCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ventasCab_cliente">
+          <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+          <End Role="ventasCab" Type="Self.ventasCab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="clieCod" />
+            </Principal>
+            <Dependent Role="ventasCab">
+              <PropertyRef Name="clieCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ventasCab_establecimiento">
+          <End Role="establecimiento" Type="Self.establecimiento" Multiplicity="0..1" />
+          <End Role="ventasCab" Type="Self.ventasCab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="establecimiento">
+              <PropertyRef Name="estCod" />
+            </Principal>
+            <Dependent Role="ventasCab">
+              <PropertyRef Name="estCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ventasCab_impuesto">
+          <End Role="impuesto" Type="Self.impuesto" Multiplicity="0..1" />
+          <End Role="ventasCab" Type="Self.ventasCab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="impuesto">
+              <PropertyRef Name="impCod" />
+            </Principal>
+            <Dependent Role="ventasCab">
+              <PropertyRef Name="impCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ventasDet_animal">
+          <End Role="animal" Type="Self.animal" Multiplicity="0..1" />
+          <End Role="ventasDet" Type="Self.ventasDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="animal">
+              <PropertyRef Name="aniCod" />
+            </Principal>
+            <Dependent Role="ventasDet">
+              <PropertyRef Name="aniCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ventasDet_ventasCab">
+          <End Role="ventasCab" Type="Self.ventasCab" Multiplicity="0..1" />
+          <End Role="ventasDet" Type="Self.ventasDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ventasCab">
+              <PropertyRef Name="vcCod" />
+            </Principal>
+            <Dependent Role="ventasDet">
+              <PropertyRef Name="vcCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ganaderiaModelStoreContainer">
+          <EntitySet Name="animal" EntityType="Self.animal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="auditoria" EntityType="Self.auditoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="barrios" EntityType="Self.barrios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="categoria" EntityType="Self.categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ciudades" EntityType="Self.ciudades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="comprasCab" EntityType="Self.comprasCab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="comprasDet" EntityType="Self.comprasDet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="departamentos" EntityType="Self.departamentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="establecimiento" EntityType="Self.establecimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gastosCab" EntityType="Self.gastosCab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gastosDet" EntityType="Self.gastosDet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gestacion" EntityType="Self.gestacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="impuesto" EntityType="Self.impuesto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nacimiento" EntityType="Self.nacimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="profesional" EntityType="Self.profesional" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="proveedor" EntityType="Self.proveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="raza" EntityType="Self.raza" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="retiro" EntityType="Self.retiro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="retiroDet" EntityType="Self.retiroDet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipoAlimentacion" EntityType="Self.tipoAlimentacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipoServicio" EntityType="Self.tipoServicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipoVacuna" EntityType="Self.tipoVacuna" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vacunacion" EntityType="Self.vacunacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ventasCab" EntityType="Self.ventasCab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ventasDet" EntityType="Self.ventasDet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vision_dispositivo" EntityType="Self.vision_dispositivo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vision_modelo" EntityType="Self.vision_modelo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vision_pesaje" EntityType="Self.vision_pesaje" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_animal_establecimiento" Association="Self.FK_animal_establecimiento">
+            <End Role="establecimiento" EntitySet="establecimiento" />
+            <End Role="animal" EntitySet="animal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_animal_raza" Association="Self.FK_animal_raza">
+            <End Role="raza" EntitySet="raza" />
+            <End Role="animal" EntitySet="animal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_auditoria_usuario" Association="Self.FK_auditoria_usuario">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="auditoria" EntitySet="auditoria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_barrios_ciudades" Association="Self.FK_barrios_ciudades">
+            <End Role="ciudades" EntitySet="ciudades" />
+            <End Role="barrios" EntitySet="barrios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ciudades_departamentos" Association="Self.FK_ciudades_departamentos">
+            <End Role="departamentos" EntitySet="departamentos" />
+            <End Role="ciudades" EntitySet="ciudades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comprasCab_establecimiento" Association="Self.FK_comprasCab_establecimiento">
+            <End Role="establecimiento" EntitySet="establecimiento" />
+            <End Role="comprasCab" EntitySet="comprasCab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comprasCab_proveedor" Association="Self.FK_comprasCab_proveedor">
+            <End Role="proveedor" EntitySet="proveedor" />
+            <End Role="comprasCab" EntitySet="comprasCab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comprasDet_comprasCab" Association="Self.FK_comprasDet_comprasCab">
+            <End Role="comprasCab" EntitySet="comprasCab" />
+            <End Role="comprasDet" EntitySet="comprasDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_establecimiento_barrios" Association="Self.FK_establecimiento_barrios">
+            <End Role="barrios" EntitySet="barrios" />
+            <End Role="establecimiento" EntitySet="establecimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_gastosCab_categoria" Association="Self.FK_gastosCab_categoria">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="gastosCab" EntitySet="gastosCab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_gastosCab_impuesto" Association="Self.FK_gastosCab_impuesto">
+            <End Role="impuesto" EntitySet="impuesto" />
+            <End Role="gastosCab" EntitySet="gastosCab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_gastosCab_proveedor" Association="Self.FK_gastosCab_proveedor">
+            <End Role="proveedor" EntitySet="proveedor" />
+            <End Role="gastosCab" EntitySet="gastosCab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_gastosDet_gastosCab" Association="Self.FK_gastosDet_gastosCab">
+            <End Role="gastosCab" EntitySet="gastosCab" />
+            <End Role="gastosDet" EntitySet="gastosDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_gestacion_animal" Association="Self.FK_gestacion_animal">
+            <End Role="animal" EntitySet="animal" />
+            <End Role="gestacion" EntitySet="gestacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_gestacion_animal1" Association="Self.FK_gestacion_animal1">
+            <End Role="animal" EntitySet="animal" />
+            <End Role="gestacion" EntitySet="gestacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_gestacion_establecimiento" Association="Self.FK_gestacion_establecimiento">
+            <End Role="establecimiento" EntitySet="establecimiento" />
+            <End Role="gestacion" EntitySet="gestacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nacimiento_animal2" Association="Self.FK_nacimiento_animal2">
+            <End Role="animal" EntitySet="animal" />
+            <End Role="nacimiento" EntitySet="nacimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nacimiento_animal3" Association="Self.FK_nacimiento_animal3">
+            <End Role="animal" EntitySet="animal" />
+            <End Role="nacimiento" EntitySet="nacimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nacimiento_tipoServicio" Association="Self.FK_nacimiento_tipoServicio">
+            <End Role="tipoServicio" EntitySet="tipoServicio" />
+            <End Role="nacimiento" EntitySet="nacimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pesaje_animal" Association="Self.FK_pesaje_animal">
+            <End Role="animal" EntitySet="animal" />
+            <End Role="vision_pesaje" EntitySet="vision_pesaje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pesaje_disp" Association="Self.FK_pesaje_disp">
+            <End Role="vision_dispositivo" EntitySet="vision_dispositivo" />
+            <End Role="vision_pesaje" EntitySet="vision_pesaje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pesaje_mod" Association="Self.FK_pesaje_mod">
+            <End Role="vision_modelo" EntitySet="vision_modelo" />
+            <End Role="vision_pesaje" EntitySet="vision_pesaje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_retiro_establecimiento" Association="Self.FK_retiro_establecimiento">
+            <End Role="establecimiento" EntitySet="establecimiento" />
+            <End Role="retiro" EntitySet="retiro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_retiroDet_animal" Association="Self.FK_retiroDet_animal">
+            <End Role="animal" EntitySet="animal" />
+            <End Role="retiroDet" EntitySet="retiroDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_retiroDet_retiro" Association="Self.FK_retiroDet_retiro">
+            <End Role="retiro" EntitySet="retiro" />
+            <End Role="retiroDet" EntitySet="retiroDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_retiroDet_tipoAlimentacion" Association="Self.FK_retiroDet_tipoAlimentacion">
+            <End Role="tipoAlimentacion" EntitySet="tipoAlimentacion" />
+            <End Role="retiroDet" EntitySet="retiroDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vacunacion_animal" Association="Self.FK_vacunacion_animal">
+            <End Role="animal" EntitySet="animal" />
+            <End Role="vacunacion" EntitySet="vacunacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vacunacion_profesional" Association="Self.FK_vacunacion_profesional">
+            <End Role="profesional" EntitySet="profesional" />
+            <End Role="vacunacion" EntitySet="vacunacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vacunacion_tipoVacuna" Association="Self.FK_vacunacion_tipoVacuna">
+            <End Role="tipoVacuna" EntitySet="tipoVacuna" />
+            <End Role="vacunacion" EntitySet="vacunacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ventasCab_cliente" Association="Self.FK_ventasCab_cliente">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="ventasCab" EntitySet="ventasCab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ventasCab_establecimiento" Association="Self.FK_ventasCab_establecimiento">
+            <End Role="establecimiento" EntitySet="establecimiento" />
+            <End Role="ventasCab" EntitySet="ventasCab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ventasCab_impuesto" Association="Self.FK_ventasCab_impuesto">
+            <End Role="impuesto" EntitySet="impuesto" />
+            <End Role="ventasCab" EntitySet="ventasCab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ventasDet_animal" Association="Self.FK_ventasDet_animal">
+            <End Role="animal" EntitySet="animal" />
+            <End Role="ventasDet" EntitySet="ventasDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ventasDet_ventasCab" Association="Self.FK_ventasDet_ventasCab">
+            <End Role="ventasCab" EntitySet="ventasCab" />
+            <End Role="ventasDet" EntitySet="ventasDet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ganaderiaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="animal">
+          <Key>
+            <PropertyRef Name="aniCod" />
+          </Key>
+          <Property Name="aniCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aniCaravana" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="razaCod" Type="Int32" />
+          <Property Name="aniSexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="aniFchNac" Type="DateTime" Precision="0" />
+          <Property Name="aniEstado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="aniFchIns" Type="DateTime" Precision="3" />
+          <Property Name="aniUsrIns" Type="Int32" />
+          <Property Name="aniFchUpd" Type="DateTime" Precision="3" />
+          <Property Name="estCod" Type="Int32" />
+          <Property Name="aniUsrUpd" Type="Int32" />
+          <Property Name="rv" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="establecimiento" Relationship="Self.FK_animal_establecimiento" FromRole="animal" ToRole="establecimiento" />
+          <NavigationProperty Name="raza" Relationship="Self.FK_animal_raza" FromRole="animal" ToRole="raza" />
+          <NavigationProperty Name="gestacions" Relationship="Self.FK_gestacion_animal" FromRole="animal" ToRole="gestacion" />
+          <NavigationProperty Name="gestacions1" Relationship="Self.FK_gestacion_animal1" FromRole="animal" ToRole="gestacion" />
+          <NavigationProperty Name="nacimientoes" Relationship="Self.FK_nacimiento_animal2" FromRole="animal" ToRole="nacimiento" />
+          <NavigationProperty Name="nacimientoes1" Relationship="Self.FK_nacimiento_animal3" FromRole="animal" ToRole="nacimiento" />
+          <NavigationProperty Name="vision_pesaje" Relationship="Self.FK_pesaje_animal" FromRole="animal" ToRole="vision_pesaje" />
+          <NavigationProperty Name="retiroDets" Relationship="Self.FK_retiroDet_animal" FromRole="animal" ToRole="retiroDet" />
+          <NavigationProperty Name="vacunacions" Relationship="Self.FK_vacunacion_animal" FromRole="animal" ToRole="vacunacion" />
+          <NavigationProperty Name="ventasDets" Relationship="Self.FK_ventasDet_animal" FromRole="animal" ToRole="ventasDet" />
+        </EntityType>
+        <EntityType Name="auditoria">
+          <Key>
+            <PropertyRef Name="audId" />
+          </Key>
+          <Property Name="audId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="audTabla" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="audAccion" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="audRegistroId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="audFecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="audUsuario" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="audLoginSql" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="audHost" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="audApp" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="audDetalleJson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="usuCod" Type="Int32" />
+          <NavigationProperty Name="usuario" Relationship="Self.FK_auditoria_usuario" FromRole="auditoria" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="barrio">
+          <Key>
+            <PropertyRef Name="barriosCod" />
+          </Key>
+          <Property Name="barriosCod" Type="Int32" Nullable="false" />
+          <Property Name="barriosNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ciudCod" Type="Int32" />
+          <NavigationProperty Name="ciudade" Relationship="Self.FK_barrios_ciudades" FromRole="barrios" ToRole="ciudades" />
+          <NavigationProperty Name="establecimientoes" Relationship="Self.FK_establecimiento_barrios" FromRole="barrios" ToRole="establecimiento" />
+        </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="catCod" />
+          </Key>
+          <Property Name="catCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="catDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="gastosCabs" Relationship="Self.FK_gastosCab_categoria" FromRole="categoria" ToRole="gastosCab" />
+        </EntityType>
+        <EntityType Name="ciudade">
+          <Key>
+            <PropertyRef Name="ciudCod" />
+          </Key>
+          <Property Name="ciudCod" Type="Int32" Nullable="false" />
+          <Property Name="ciudNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="depaCod" Type="Int32" />
+          <NavigationProperty Name="barrios" Relationship="Self.FK_barrios_ciudades" FromRole="ciudades" ToRole="barrios" />
+          <NavigationProperty Name="departamento" Relationship="Self.FK_ciudades_departamentos" FromRole="ciudades" ToRole="departamentos" />
+        </EntityType>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="clieCod" />
+          </Key>
+          <Property Name="clieCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clieNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="clieMarca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ventasCabs" Relationship="Self.FK_ventasCab_cliente" FromRole="cliente" ToRole="ventasCab" />
+        </EntityType>
+        <EntityType Name="comprasCab">
+          <Key>
+            <PropertyRef Name="ccCod" />
+          </Key>
+          <Property Name="ccCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="provCod" Type="Int32" />
+          <Property Name="ccFch" Type="DateTime" Precision="0" />
+          <Property Name="estCod" Type="Int32" />
+          <Property Name="rv" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="establecimiento" Relationship="Self.FK_comprasCab_establecimiento" FromRole="comprasCab" ToRole="establecimiento" />
+          <NavigationProperty Name="proveedor" Relationship="Self.FK_comprasCab_proveedor" FromRole="comprasCab" ToRole="proveedor" />
+          <NavigationProperty Name="comprasDets" Relationship="Self.FK_comprasDet_comprasCab" FromRole="comprasCab" ToRole="comprasDet" />
+        </EntityType>
+        <EntityType Name="comprasDet">
+          <Key>
+            <PropertyRef Name="cdCod" />
+          </Key>
+          <Property Name="cdCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ccCod" Type="Int32" />
+          <Property Name="cdCantidad" Type="Int32" />
+          <Property Name="cdUnitario" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="cdTotal" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="rv" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="comprasCab" Relationship="Self.FK_comprasDet_comprasCab" FromRole="comprasDet" ToRole="comprasCab" />
+        </EntityType>
+        <EntityType Name="departamento">
+          <Key>
+            <PropertyRef Name="depaCod" />
+          </Key>
+          <Property Name="depaCod" Type="Int32" Nullable="false" />
+          <Property Name="depaNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ciudades" Relationship="Self.FK_ciudades_departamentos" FromRole="departamentos" ToRole="ciudades" />
+        </EntityType>
+        <EntityType Name="establecimiento">
+          <Key>
+            <PropertyRef Name="estCod" />
+          </Key>
+          <Property Name="estCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="estNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="estBarrio" Type="Int32" />
+          <NavigationProperty Name="animals" Relationship="Self.FK_animal_establecimiento" FromRole="establecimiento" ToRole="animal" />
+          <NavigationProperty Name="barrio" Relationship="Self.FK_establecimiento_barrios" FromRole="establecimiento" ToRole="barrios" />
+          <NavigationProperty Name="comprasCabs" Relationship="Self.FK_comprasCab_establecimiento" FromRole="establecimiento" ToRole="comprasCab" />
+          <NavigationProperty Name="gestacions" Relationship="Self.FK_gestacion_establecimiento" FromRole="establecimiento" ToRole="gestacion" />
+          <NavigationProperty Name="retiroes" Relationship="Self.FK_retiro_establecimiento" FromRole="establecimiento" ToRole="retiro" />
+          <NavigationProperty Name="ventasCabs" Relationship="Self.FK_ventasCab_establecimiento" FromRole="establecimiento" ToRole="ventasCab" />
+        </EntityType>
+        <EntityType Name="gastosCab">
+          <Key>
+            <PropertyRef Name="gcCod" />
+          </Key>
+          <Property Name="gcCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gcDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gcFecha" Type="DateTime" Precision="0" />
+          <Property Name="gcMonto" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="impCod" Type="Int32" />
+          <Property Name="provCod" Type="Int32" />
+          <Property Name="catCod" Type="Int32" />
+          <Property Name="rv" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="categoria" Relationship="Self.FK_gastosCab_categoria" FromRole="gastosCab" ToRole="categoria" />
+          <NavigationProperty Name="impuesto" Relationship="Self.FK_gastosCab_impuesto" FromRole="gastosCab" ToRole="impuesto" />
+          <NavigationProperty Name="proveedor" Relationship="Self.FK_gastosCab_proveedor" FromRole="gastosCab" ToRole="proveedor" />
+          <NavigationProperty Name="gastosDets" Relationship="Self.FK_gastosDet_gastosCab" FromRole="gastosCab" ToRole="gastosDet" />
+        </EntityType>
+        <EntityType Name="gastosDet">
+          <Key>
+            <PropertyRef Name="gdCod" />
+          </Key>
+          <Property Name="gdCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gcCod" Type="Int32" />
+          <Property Name="gdItem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gdCantidad" Type="Int32" />
+          <Property Name="gdUnitario" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="rv" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="gastosCab" Relationship="Self.FK_gastosDet_gastosCab" FromRole="gastosDet" ToRole="gastosCab" />
+        </EntityType>
+        <EntityType Name="gestacion">
+          <Key>
+            <PropertyRef Name="preCod" />
+          </Key>
+          <Property Name="preCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aniCodMadre" Type="Int32" />
+          <Property Name="preFchMontura" Type="DateTime" Precision="0" />
+          <Property Name="preFchConfirma" Type="DateTime" Precision="0" />
+          <Property Name="preFchparto" Type="DateTime" Precision="0" />
+          <Property Name="preEstado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="estCod" Type="Int32" />
+          <Property Name="aniCodPadre" Type="Int32" />
+          <Property Name="rv" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="animal" Relationship="Self.FK_gestacion_animal" FromRole="gestacion" ToRole="animal" />
+          <NavigationProperty Name="animal1" Relationship="Self.FK_gestacion_animal1" FromRole="gestacion" ToRole="animal" />
+          <NavigationProperty Name="establecimiento" Relationship="Self.FK_gestacion_establecimiento" FromRole="gestacion" ToRole="establecimiento" />
+        </EntityType>
+        <EntityType Name="impuesto">
+          <Key>
+            <PropertyRef Name="impCod" />
+          </Key>
+          <Property Name="impCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="impDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="impDivisor" Type="Int32" />
+          <NavigationProperty Name="gastosCabs" Relationship="Self.FK_gastosCab_impuesto" FromRole="impuesto" ToRole="gastosCab" />
+          <NavigationProperty Name="ventasCabs" Relationship="Self.FK_ventasCab_impuesto" FromRole="impuesto" ToRole="ventasCab" />
+        </EntityType>
+        <EntityType Name="nacimiento">
+          <Key>
+            <PropertyRef Name="nacCod" />
+          </Key>
+          <Property Name="nacCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aniCodMadre" Type="Int32" />
+          <Property Name="nacFch" Type="DateTime" Precision="0" />
+          <Property Name="nacSexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="nacEstado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="aniCodCria" Type="Int32" />
+          <Property Name="tsCod" Type="Int32" />
+          <Property Name="rv" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="animal" Relationship="Self.FK_nacimiento_animal2" FromRole="nacimiento" ToRole="animal" />
+          <NavigationProperty Name="animal1" Relationship="Self.FK_nacimiento_animal3" FromRole="nacimiento" ToRole="animal" />
+          <NavigationProperty Name="tipoServicio" Relationship="Self.FK_nacimiento_tipoServicio" FromRole="nacimiento" ToRole="tipoServicio" />
+        </EntityType>
+        <EntityType Name="profesional">
+          <Key>
+            <PropertyRef Name="profCod" />
+          </Key>
+          <Property Name="profCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="profNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="vacunacions" Relationship="Self.FK_vacunacion_profesional" FromRole="profesional" ToRole="vacunacion" />
+        </EntityType>
+        <EntityType Name="proveedor">
+          <Key>
+            <PropertyRef Name="provCod" />
+          </Key>
+          <Property Name="provCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="provNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="provMarca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="comprasCabs" Relationship="Self.FK_comprasCab_proveedor" FromRole="proveedor" ToRole="comprasCab" />
+          <NavigationProperty Name="gastosCabs" Relationship="Self.FK_gastosCab_proveedor" FromRole="proveedor" ToRole="gastosCab" />
+        </EntityType>
+        <EntityType Name="raza">
+          <Key>
+            <PropertyRef Name="razaCod" />
+          </Key>
+          <Property Name="razaCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="razaDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="animals" Relationship="Self.FK_animal_raza" FromRole="raza" ToRole="animal" />
+        </EntityType>
+        <EntityType Name="retiro">
+          <Key>
+            <PropertyRef Name="retiCod" />
+          </Key>
+          <Property Name="retiCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="retiNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="estCod" Type="Int32" />
+          <NavigationProperty Name="establecimiento" Relationship="Self.FK_retiro_establecimiento" FromRole="retiro" ToRole="establecimiento" />
+          <NavigationProperty Name="retiroDets" Relationship="Self.FK_retiroDet_retiro" FromRole="retiro" ToRole="retiroDet" />
+        </EntityType>
+        <EntityType Name="retiroDet">
+          <Key>
+            <PropertyRef Name="retiDetCod" />
+          </Key>
+          <Property Name="retiDetCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="retiCod" Type="Int32" />
+          <Property Name="aniCod" Type="Int32" />
+          <Property Name="taCod" Type="Int32" />
+          <NavigationProperty Name="animal" Relationship="Self.FK_retiroDet_animal" FromRole="retiroDet" ToRole="animal" />
+          <NavigationProperty Name="retiro" Relationship="Self.FK_retiroDet_retiro" FromRole="retiroDet" ToRole="retiro" />
+          <NavigationProperty Name="tipoAlimentacion" Relationship="Self.FK_retiroDet_tipoAlimentacion" FromRole="retiroDet" ToRole="tipoAlimentacion" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tipoAlimentacion">
+          <Key>
+            <PropertyRef Name="taCod" />
+          </Key>
+          <Property Name="taCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="taNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="retiroDets" Relationship="Self.FK_retiroDet_tipoAlimentacion" FromRole="tipoAlimentacion" ToRole="retiroDet" />
+        </EntityType>
+        <EntityType Name="tipoServicio">
+          <Key>
+            <PropertyRef Name="tsCod" />
+          </Key>
+          <Property Name="tsCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tsNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="nacimientoes" Relationship="Self.FK_nacimiento_tipoServicio" FromRole="tipoServicio" ToRole="nacimiento" />
+        </EntityType>
+        <EntityType Name="tipoVacuna">
+          <Key>
+            <PropertyRef Name="tvCod" />
+          </Key>
+          <Property Name="tvCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tvNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="vacunacions" Relationship="Self.FK_vacunacion_tipoVacuna" FromRole="tipoVacuna" ToRole="vacunacion" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="usuCod" />
+          </Key>
+          <Property Name="usuCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuLogin" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="usuNombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="usuPass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usuDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usuRol" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="usuEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="usuFchCrea" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="usuFchMod" Type="DateTime" Precision="0" />
+          <Property Name="usuActivo" Type="Int32" />
+          <NavigationProperty Name="auditorias" Relationship="Self.FK_auditoria_usuario" FromRole="usuario" ToRole="auditoria" />
+        </EntityType>
+        <EntityType Name="vacunacion">
+          <Key>
+            <PropertyRef Name="vacCod" />
+          </Key>
+          <Property Name="vacCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vacFch" Type="DateTime" Precision="0" />
+          <Property Name="tvCod" Type="Int32" />
+          <Property Name="vacDosis" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="profCod" Type="Int32" />
+          <Property Name="aniCod" Type="Int32" />
+          <Property Name="rv" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="animal" Relationship="Self.FK_vacunacion_animal" FromRole="vacunacion" ToRole="animal" />
+          <NavigationProperty Name="profesional" Relationship="Self.FK_vacunacion_profesional" FromRole="vacunacion" ToRole="profesional" />
+          <NavigationProperty Name="tipoVacuna" Relationship="Self.FK_vacunacion_tipoVacuna" FromRole="vacunacion" ToRole="tipoVacuna" />
+        </EntityType>
+        <EntityType Name="ventasCab">
+          <Key>
+            <PropertyRef Name="vcCod" />
+          </Key>
+          <Property Name="vcCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vcFch" Type="DateTime" Precision="0" />
+          <Property Name="clieCod" Type="Int32" />
+          <Property Name="impCod" Type="Int32" />
+          <Property Name="estCod" Type="Int32" />
+          <Property Name="rv" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="cliente" Relationship="Self.FK_ventasCab_cliente" FromRole="ventasCab" ToRole="cliente" />
+          <NavigationProperty Name="establecimiento" Relationship="Self.FK_ventasCab_establecimiento" FromRole="ventasCab" ToRole="establecimiento" />
+          <NavigationProperty Name="impuesto" Relationship="Self.FK_ventasCab_impuesto" FromRole="ventasCab" ToRole="impuesto" />
+          <NavigationProperty Name="ventasDets" Relationship="Self.FK_ventasDet_ventasCab" FromRole="ventasCab" ToRole="ventasDet" />
+        </EntityType>
+        <EntityType Name="ventasDet">
+          <Key>
+            <PropertyRef Name="vdCod" />
+          </Key>
+          <Property Name="vdCod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vcCod" Type="Int32" />
+          <Property Name="vdCantidad" Type="Int32" />
+          <Property Name="vdUnitario" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="vdTotal" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="vdPesoProm" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="aniCod" Type="Int32" />
+          <Property Name="rv" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="animal" Relationship="Self.FK_ventasDet_animal" FromRole="ventasDet" ToRole="animal" />
+          <NavigationProperty Name="ventasCab" Relationship="Self.FK_ventasDet_ventasCab" FromRole="ventasDet" ToRole="ventasCab" />
+        </EntityType>
+        <EntityType Name="vision_dispositivo">
+          <Key>
+            <PropertyRef Name="dispId" />
+          </Key>
+          <Property Name="dispId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="serie" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ubicacion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="activo" Type="Boolean" Nullable="false" />
+          <Property Name="rowversion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="vision_pesaje" Relationship="Self.FK_pesaje_disp" FromRole="vision_dispositivo" ToRole="vision_pesaje" />
+        </EntityType>
+        <EntityType Name="vision_modelo">
+          <Key>
+            <PropertyRef Name="modId" />
+          </Key>
+          <Property Name="modId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="version" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="enfoque" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hash" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fechaCarga" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="rowversion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="vision_pesaje" Relationship="Self.FK_pesaje_mod" FromRole="vision_modelo" ToRole="vision_pesaje" />
+        </EntityType>
+        <EntityType Name="vision_pesaje">
+          <Key>
+            <PropertyRef Name="pesId" />
+          </Key>
+          <Property Name="pesId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aniCod" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="pesoKg" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="confianza" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="metodo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dispId" Type="Int32" />
+          <Property Name="modId" Type="Int32" />
+          <Property Name="imgPath" Type="String" MaxLength="260" FixedLength="false" Unicode="true" />
+          <Property Name="medidasJson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="notas" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="animal" Relationship="Self.FK_pesaje_animal" FromRole="vision_pesaje" ToRole="animal" />
+          <NavigationProperty Name="vision_dispositivo" Relationship="Self.FK_pesaje_disp" FromRole="vision_pesaje" ToRole="vision_dispositivo" />
+          <NavigationProperty Name="vision_modelo" Relationship="Self.FK_pesaje_mod" FromRole="vision_pesaje" ToRole="vision_modelo" />
+        </EntityType>
+        <Association Name="FK_animal_establecimiento">
+          <End Role="establecimiento" Type="Self.establecimiento" Multiplicity="0..1" />
+          <End Role="animal" Type="Self.animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="establecimiento">
+              <PropertyRef Name="estCod" />
+            </Principal>
+            <Dependent Role="animal">
+              <PropertyRef Name="estCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_animal_raza">
+          <End Role="raza" Type="Self.raza" Multiplicity="0..1" />
+          <End Role="animal" Type="Self.animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="raza">
+              <PropertyRef Name="razaCod" />
+            </Principal>
+            <Dependent Role="animal">
+              <PropertyRef Name="razaCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_gestacion_animal">
+          <End Role="animal" Type="Self.animal" Multiplicity="0..1" />
+          <End Role="gestacion" Type="Self.gestacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="animal">
+              <PropertyRef Name="aniCod" />
+            </Principal>
+            <Dependent Role="gestacion">
+              <PropertyRef Name="aniCodMadre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_gestacion_animal1">
+          <End Role="animal" Type="Self.animal" Multiplicity="0..1" />
+          <End Role="gestacion" Type="Self.gestacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="animal">
+              <PropertyRef Name="aniCod" />
+            </Principal>
+            <Dependent Role="gestacion">
+              <PropertyRef Name="aniCodPadre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nacimiento_animal2">
+          <End Role="animal" Type="Self.animal" Multiplicity="0..1" />
+          <End Role="nacimiento" Type="Self.nacimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="animal">
+              <PropertyRef Name="aniCod" />
+            </Principal>
+            <Dependent Role="nacimiento">
+              <PropertyRef Name="aniCodMadre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nacimiento_animal3">
+          <End Role="animal" Type="Self.animal" Multiplicity="0..1" />
+          <End Role="nacimiento" Type="Self.nacimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="animal">
+              <PropertyRef Name="aniCod" />
+            </Principal>
+            <Dependent Role="nacimiento">
+              <PropertyRef Name="aniCodCria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pesaje_animal">
+          <End Role="animal" Type="Self.animal" Multiplicity="1" />
+          <End Role="vision_pesaje" Type="Self.vision_pesaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="animal">
+              <PropertyRef Name="aniCod" />
+            </Principal>
+            <Dependent Role="vision_pesaje">
+              <PropertyRef Name="aniCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_retiroDet_animal">
+          <End Role="animal" Type="Self.animal" Multiplicity="0..1" />
+          <End Role="retiroDet" Type="Self.retiroDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="animal">
+              <PropertyRef Name="aniCod" />
+            </Principal>
+            <Dependent Role="retiroDet">
+              <PropertyRef Name="aniCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vacunacion_animal">
+          <End Role="animal" Type="Self.animal" Multiplicity="0..1" />
+          <End Role="vacunacion" Type="Self.vacunacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="animal">
+              <PropertyRef Name="aniCod" />
+            </Principal>
+            <Dependent Role="vacunacion">
+              <PropertyRef Name="aniCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ventasDet_animal">
+          <End Role="animal" Type="Self.animal" Multiplicity="0..1" />
+          <End Role="ventasDet" Type="Self.ventasDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="animal">
+              <PropertyRef Name="aniCod" />
+            </Principal>
+            <Dependent Role="ventasDet">
+              <PropertyRef Name="aniCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_auditoria_usuario">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+          <End Role="auditoria" Type="Self.auditoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="usuCod" />
+            </Principal>
+            <Dependent Role="auditoria">
+              <PropertyRef Name="usuCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_barrios_ciudades">
+          <End Role="ciudades" Type="Self.ciudade" Multiplicity="0..1" />
+          <End Role="barrios" Type="Self.barrio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudades">
+              <PropertyRef Name="ciudCod" />
+            </Principal>
+            <Dependent Role="barrios">
+              <PropertyRef Name="ciudCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_establecimiento_barrios">
+          <End Role="barrios" Type="Self.barrio" Multiplicity="0..1" />
+          <End Role="establecimiento" Type="Self.establecimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="barrios">
+              <PropertyRef Name="barriosCod" />
+            </Principal>
+            <Dependent Role="establecimiento">
+              <PropertyRef Name="estBarrio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_gastosCab_categoria">
+          <End Role="categoria" Type="Self.categoria" Multiplicity="0..1" />
+          <End Role="gastosCab" Type="Self.gastosCab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="catCod" />
+            </Principal>
+            <Dependent Role="gastosCab">
+              <PropertyRef Name="catCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ciudades_departamentos">
+          <End Role="departamentos" Type="Self.departamento" Multiplicity="0..1" />
+          <End Role="ciudades" Type="Self.ciudade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departamentos">
+              <PropertyRef Name="depaCod" />
+            </Principal>
+            <Dependent Role="ciudades">
+              <PropertyRef Name="depaCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ventasCab_cliente">
+          <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+          <End Role="ventasCab" Type="Self.ventasCab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="clieCod" />
+            </Principal>
+            <Dependent Role="ventasCab">
+              <PropertyRef Name="clieCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comprasCab_establecimiento">
+          <End Role="establecimiento" Type="Self.establecimiento" Multiplicity="0..1" />
+          <End Role="comprasCab" Type="Self.comprasCab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="establecimiento">
+              <PropertyRef Name="estCod" />
+            </Principal>
+            <Dependent Role="comprasCab">
+              <PropertyRef Name="estCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comprasCab_proveedor">
+          <End Role="proveedor" Type="Self.proveedor" Multiplicity="0..1" />
+          <End Role="comprasCab" Type="Self.comprasCab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proveedor">
+              <PropertyRef Name="provCod" />
+            </Principal>
+            <Dependent Role="comprasCab">
+              <PropertyRef Name="provCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comprasDet_comprasCab">
+          <End Role="comprasCab" Type="Self.comprasCab" Multiplicity="0..1" />
+          <End Role="comprasDet" Type="Self.comprasDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comprasCab">
+              <PropertyRef Name="ccCod" />
+            </Principal>
+            <Dependent Role="comprasDet">
+              <PropertyRef Name="ccCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_gestacion_establecimiento">
+          <End Role="establecimiento" Type="Self.establecimiento" Multiplicity="0..1" />
+          <End Role="gestacion" Type="Self.gestacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="establecimiento">
+              <PropertyRef Name="estCod" />
+            </Principal>
+            <Dependent Role="gestacion">
+              <PropertyRef Name="estCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_retiro_establecimiento">
+          <End Role="establecimiento" Type="Self.establecimiento" Multiplicity="0..1" />
+          <End Role="retiro" Type="Self.retiro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="establecimiento">
+              <PropertyRef Name="estCod" />
+            </Principal>
+            <Dependent Role="retiro">
+              <PropertyRef Name="estCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ventasCab_establecimiento">
+          <End Role="establecimiento" Type="Self.establecimiento" Multiplicity="0..1" />
+          <End Role="ventasCab" Type="Self.ventasCab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="establecimiento">
+              <PropertyRef Name="estCod" />
+            </Principal>
+            <Dependent Role="ventasCab">
+              <PropertyRef Name="estCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_gastosCab_impuesto">
+          <End Role="impuesto" Type="Self.impuesto" Multiplicity="0..1" />
+          <End Role="gastosCab" Type="Self.gastosCab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="impuesto">
+              <PropertyRef Name="impCod" />
+            </Principal>
+            <Dependent Role="gastosCab">
+              <PropertyRef Name="impCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_gastosCab_proveedor">
+          <End Role="proveedor" Type="Self.proveedor" Multiplicity="0..1" />
+          <End Role="gastosCab" Type="Self.gastosCab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proveedor">
+              <PropertyRef Name="provCod" />
+            </Principal>
+            <Dependent Role="gastosCab">
+              <PropertyRef Name="provCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_gastosDet_gastosCab">
+          <End Role="gastosCab" Type="Self.gastosCab" Multiplicity="0..1" />
+          <End Role="gastosDet" Type="Self.gastosDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gastosCab">
+              <PropertyRef Name="gcCod" />
+            </Principal>
+            <Dependent Role="gastosDet">
+              <PropertyRef Name="gcCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ventasCab_impuesto">
+          <End Role="impuesto" Type="Self.impuesto" Multiplicity="0..1" />
+          <End Role="ventasCab" Type="Self.ventasCab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="impuesto">
+              <PropertyRef Name="impCod" />
+            </Principal>
+            <Dependent Role="ventasCab">
+              <PropertyRef Name="impCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nacimiento_tipoServicio">
+          <End Role="tipoServicio" Type="Self.tipoServicio" Multiplicity="0..1" />
+          <End Role="nacimiento" Type="Self.nacimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoServicio">
+              <PropertyRef Name="tsCod" />
+            </Principal>
+            <Dependent Role="nacimiento">
+              <PropertyRef Name="tsCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vacunacion_profesional">
+          <End Role="profesional" Type="Self.profesional" Multiplicity="0..1" />
+          <End Role="vacunacion" Type="Self.vacunacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profesional">
+              <PropertyRef Name="profCod" />
+            </Principal>
+            <Dependent Role="vacunacion">
+              <PropertyRef Name="profCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_retiroDet_retiro">
+          <End Role="retiro" Type="Self.retiro" Multiplicity="0..1" />
+          <End Role="retiroDet" Type="Self.retiroDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="retiro">
+              <PropertyRef Name="retiCod" />
+            </Principal>
+            <Dependent Role="retiroDet">
+              <PropertyRef Name="retiCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_retiroDet_tipoAlimentacion">
+          <End Role="tipoAlimentacion" Type="Self.tipoAlimentacion" Multiplicity="0..1" />
+          <End Role="retiroDet" Type="Self.retiroDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoAlimentacion">
+              <PropertyRef Name="taCod" />
+            </Principal>
+            <Dependent Role="retiroDet">
+              <PropertyRef Name="taCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vacunacion_tipoVacuna">
+          <End Role="tipoVacuna" Type="Self.tipoVacuna" Multiplicity="0..1" />
+          <End Role="vacunacion" Type="Self.vacunacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoVacuna">
+              <PropertyRef Name="tvCod" />
+            </Principal>
+            <Dependent Role="vacunacion">
+              <PropertyRef Name="tvCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ventasDet_ventasCab">
+          <End Role="ventasCab" Type="Self.ventasCab" Multiplicity="0..1" />
+          <End Role="ventasDet" Type="Self.ventasDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ventasCab">
+              <PropertyRef Name="vcCod" />
+            </Principal>
+            <Dependent Role="ventasDet">
+              <PropertyRef Name="vcCod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pesaje_disp">
+          <End Role="vision_dispositivo" Type="Self.vision_dispositivo" Multiplicity="0..1" />
+          <End Role="vision_pesaje" Type="Self.vision_pesaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vision_dispositivo">
+              <PropertyRef Name="dispId" />
+            </Principal>
+            <Dependent Role="vision_pesaje">
+              <PropertyRef Name="dispId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pesaje_mod">
+          <End Role="vision_modelo" Type="Self.vision_modelo" Multiplicity="0..1" />
+          <End Role="vision_pesaje" Type="Self.vision_pesaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vision_modelo">
+              <PropertyRef Name="modId" />
+            </Principal>
+            <Dependent Role="vision_pesaje">
+              <PropertyRef Name="modId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ganaderiaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="animals" EntityType="Self.animal" />
+          <EntitySet Name="auditorias" EntityType="Self.auditoria" />
+          <EntitySet Name="barrios" EntityType="Self.barrio" />
+          <EntitySet Name="categorias" EntityType="Self.categoria" />
+          <EntitySet Name="ciudades" EntityType="Self.ciudade" />
+          <EntitySet Name="clientes" EntityType="Self.cliente" />
+          <EntitySet Name="comprasCabs" EntityType="Self.comprasCab" />
+          <EntitySet Name="comprasDets" EntityType="Self.comprasDet" />
+          <EntitySet Name="departamentos" EntityType="Self.departamento" />
+          <EntitySet Name="establecimientoes" EntityType="Self.establecimiento" />
+          <EntitySet Name="gastosCabs" EntityType="Self.gastosCab" />
+          <EntitySet Name="gastosDets" EntityType="Self.gastosDet" />
+          <EntitySet Name="gestacions" EntityType="Self.gestacion" />
+          <EntitySet Name="impuestoes" EntityType="Self.impuesto" />
+          <EntitySet Name="nacimientoes" EntityType="Self.nacimiento" />
+          <EntitySet Name="profesionals" EntityType="Self.profesional" />
+          <EntitySet Name="proveedors" EntityType="Self.proveedor" />
+          <EntitySet Name="razas" EntityType="Self.raza" />
+          <EntitySet Name="retiroes" EntityType="Self.retiro" />
+          <EntitySet Name="retiroDets" EntityType="Self.retiroDet" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tipoAlimentacions" EntityType="Self.tipoAlimentacion" />
+          <EntitySet Name="tipoServicios" EntityType="Self.tipoServicio" />
+          <EntitySet Name="tipoVacunas" EntityType="Self.tipoVacuna" />
+          <EntitySet Name="usuarios" EntityType="Self.usuario" />
+          <EntitySet Name="vacunacions" EntityType="Self.vacunacion" />
+          <EntitySet Name="ventasCabs" EntityType="Self.ventasCab" />
+          <EntitySet Name="ventasDets" EntityType="Self.ventasDet" />
+          <EntitySet Name="vision_dispositivo" EntityType="Self.vision_dispositivo" />
+          <EntitySet Name="vision_modelo" EntityType="Self.vision_modelo" />
+          <EntitySet Name="vision_pesaje" EntityType="Self.vision_pesaje" />
+          <AssociationSet Name="FK_animal_establecimiento" Association="Self.FK_animal_establecimiento">
+            <End Role="establecimiento" EntitySet="establecimientoes" />
+            <End Role="animal" EntitySet="animals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_animal_raza" Association="Self.FK_animal_raza">
+            <End Role="raza" EntitySet="razas" />
+            <End Role="animal" EntitySet="animals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_gestacion_animal" Association="Self.FK_gestacion_animal">
+            <End Role="animal" EntitySet="animals" />
+            <End Role="gestacion" EntitySet="gestacions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_gestacion_animal1" Association="Self.FK_gestacion_animal1">
+            <End Role="animal" EntitySet="animals" />
+            <End Role="gestacion" EntitySet="gestacions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nacimiento_animal2" Association="Self.FK_nacimiento_animal2">
+            <End Role="animal" EntitySet="animals" />
+            <End Role="nacimiento" EntitySet="nacimientoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nacimiento_animal3" Association="Self.FK_nacimiento_animal3">
+            <End Role="animal" EntitySet="animals" />
+            <End Role="nacimiento" EntitySet="nacimientoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pesaje_animal" Association="Self.FK_pesaje_animal">
+            <End Role="animal" EntitySet="animals" />
+            <End Role="vision_pesaje" EntitySet="vision_pesaje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_retiroDet_animal" Association="Self.FK_retiroDet_animal">
+            <End Role="animal" EntitySet="animals" />
+            <End Role="retiroDet" EntitySet="retiroDets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vacunacion_animal" Association="Self.FK_vacunacion_animal">
+            <End Role="animal" EntitySet="animals" />
+            <End Role="vacunacion" EntitySet="vacunacions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ventasDet_animal" Association="Self.FK_ventasDet_animal">
+            <End Role="animal" EntitySet="animals" />
+            <End Role="ventasDet" EntitySet="ventasDets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_auditoria_usuario" Association="Self.FK_auditoria_usuario">
+            <End Role="usuario" EntitySet="usuarios" />
+            <End Role="auditoria" EntitySet="auditorias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_barrios_ciudades" Association="Self.FK_barrios_ciudades">
+            <End Role="ciudades" EntitySet="ciudades" />
+            <End Role="barrios" EntitySet="barrios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_establecimiento_barrios" Association="Self.FK_establecimiento_barrios">
+            <End Role="barrios" EntitySet="barrios" />
+            <End Role="establecimiento" EntitySet="establecimientoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_gastosCab_categoria" Association="Self.FK_gastosCab_categoria">
+            <End Role="categoria" EntitySet="categorias" />
+            <End Role="gastosCab" EntitySet="gastosCabs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ciudades_departamentos" Association="Self.FK_ciudades_departamentos">
+            <End Role="departamentos" EntitySet="departamentos" />
+            <End Role="ciudades" EntitySet="ciudades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ventasCab_cliente" Association="Self.FK_ventasCab_cliente">
+            <End Role="cliente" EntitySet="clientes" />
+            <End Role="ventasCab" EntitySet="ventasCabs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comprasCab_establecimiento" Association="Self.FK_comprasCab_establecimiento">
+            <End Role="establecimiento" EntitySet="establecimientoes" />
+            <End Role="comprasCab" EntitySet="comprasCabs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comprasCab_proveedor" Association="Self.FK_comprasCab_proveedor">
+            <End Role="proveedor" EntitySet="proveedors" />
+            <End Role="comprasCab" EntitySet="comprasCabs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comprasDet_comprasCab" Association="Self.FK_comprasDet_comprasCab">
+            <End Role="comprasCab" EntitySet="comprasCabs" />
+            <End Role="comprasDet" EntitySet="comprasDets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_gestacion_establecimiento" Association="Self.FK_gestacion_establecimiento">
+            <End Role="establecimiento" EntitySet="establecimientoes" />
+            <End Role="gestacion" EntitySet="gestacions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_retiro_establecimiento" Association="Self.FK_retiro_establecimiento">
+            <End Role="establecimiento" EntitySet="establecimientoes" />
+            <End Role="retiro" EntitySet="retiroes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ventasCab_establecimiento" Association="Self.FK_ventasCab_establecimiento">
+            <End Role="establecimiento" EntitySet="establecimientoes" />
+            <End Role="ventasCab" EntitySet="ventasCabs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_gastosCab_impuesto" Association="Self.FK_gastosCab_impuesto">
+            <End Role="impuesto" EntitySet="impuestoes" />
+            <End Role="gastosCab" EntitySet="gastosCabs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_gastosCab_proveedor" Association="Self.FK_gastosCab_proveedor">
+            <End Role="proveedor" EntitySet="proveedors" />
+            <End Role="gastosCab" EntitySet="gastosCabs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_gastosDet_gastosCab" Association="Self.FK_gastosDet_gastosCab">
+            <End Role="gastosCab" EntitySet="gastosCabs" />
+            <End Role="gastosDet" EntitySet="gastosDets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ventasCab_impuesto" Association="Self.FK_ventasCab_impuesto">
+            <End Role="impuesto" EntitySet="impuestoes" />
+            <End Role="ventasCab" EntitySet="ventasCabs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nacimiento_tipoServicio" Association="Self.FK_nacimiento_tipoServicio">
+            <End Role="tipoServicio" EntitySet="tipoServicios" />
+            <End Role="nacimiento" EntitySet="nacimientoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vacunacion_profesional" Association="Self.FK_vacunacion_profesional">
+            <End Role="profesional" EntitySet="profesionals" />
+            <End Role="vacunacion" EntitySet="vacunacions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_retiroDet_retiro" Association="Self.FK_retiroDet_retiro">
+            <End Role="retiro" EntitySet="retiroes" />
+            <End Role="retiroDet" EntitySet="retiroDets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_retiroDet_tipoAlimentacion" Association="Self.FK_retiroDet_tipoAlimentacion">
+            <End Role="tipoAlimentacion" EntitySet="tipoAlimentacions" />
+            <End Role="retiroDet" EntitySet="retiroDets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vacunacion_tipoVacuna" Association="Self.FK_vacunacion_tipoVacuna">
+            <End Role="tipoVacuna" EntitySet="tipoVacunas" />
+            <End Role="vacunacion" EntitySet="vacunacions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ventasDet_ventasCab" Association="Self.FK_ventasDet_ventasCab">
+            <End Role="ventasCab" EntitySet="ventasCabs" />
+            <End Role="ventasDet" EntitySet="ventasDets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pesaje_disp" Association="Self.FK_pesaje_disp">
+            <End Role="vision_dispositivo" EntitySet="vision_dispositivo" />
+            <End Role="vision_pesaje" EntitySet="vision_pesaje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pesaje_mod" Association="Self.FK_pesaje_mod">
+            <End Role="vision_modelo" EntitySet="vision_modelo" />
+            <End Role="vision_pesaje" EntitySet="vision_pesaje" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ganaderiaModelStoreContainer" CdmEntityContainer="ganaderiaEntities">
+          <EntitySetMapping Name="animals">
+            <EntityTypeMapping TypeName="ganaderiaModel.animal">
+              <MappingFragment StoreEntitySet="animal">
+                <ScalarProperty Name="aniCod" ColumnName="aniCod" />
+                <ScalarProperty Name="aniCaravana" ColumnName="aniCaravana" />
+                <ScalarProperty Name="razaCod" ColumnName="razaCod" />
+                <ScalarProperty Name="aniSexo" ColumnName="aniSexo" />
+                <ScalarProperty Name="aniFchNac" ColumnName="aniFchNac" />
+                <ScalarProperty Name="aniEstado" ColumnName="aniEstado" />
+                <ScalarProperty Name="aniFchIns" ColumnName="aniFchIns" />
+                <ScalarProperty Name="aniUsrIns" ColumnName="aniUsrIns" />
+                <ScalarProperty Name="aniFchUpd" ColumnName="aniFchUpd" />
+                <ScalarProperty Name="estCod" ColumnName="estCod" />
+                <ScalarProperty Name="aniUsrUpd" ColumnName="aniUsrUpd" />
+                <ScalarProperty Name="rv" ColumnName="rv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="auditorias">
+            <EntityTypeMapping TypeName="ganaderiaModel.auditoria">
+              <MappingFragment StoreEntitySet="auditoria">
+                <ScalarProperty Name="audId" ColumnName="audId" />
+                <ScalarProperty Name="audTabla" ColumnName="audTabla" />
+                <ScalarProperty Name="audAccion" ColumnName="audAccion" />
+                <ScalarProperty Name="audRegistroId" ColumnName="audRegistroId" />
+                <ScalarProperty Name="audFecha" ColumnName="audFecha" />
+                <ScalarProperty Name="audUsuario" ColumnName="audUsuario" />
+                <ScalarProperty Name="audLoginSql" ColumnName="audLoginSql" />
+                <ScalarProperty Name="audHost" ColumnName="audHost" />
+                <ScalarProperty Name="audApp" ColumnName="audApp" />
+                <ScalarProperty Name="audDetalleJson" ColumnName="audDetalleJson" />
+                <ScalarProperty Name="usuCod" ColumnName="usuCod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="barrios">
+            <EntityTypeMapping TypeName="ganaderiaModel.barrio">
+              <MappingFragment StoreEntitySet="barrios">
+                <ScalarProperty Name="barriosCod" ColumnName="barriosCod" />
+                <ScalarProperty Name="barriosNombre" ColumnName="barriosNombre" />
+                <ScalarProperty Name="ciudCod" ColumnName="ciudCod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categorias">
+            <EntityTypeMapping TypeName="ganaderiaModel.categoria">
+              <MappingFragment StoreEntitySet="categoria">
+                <ScalarProperty Name="catCod" ColumnName="catCod" />
+                <ScalarProperty Name="catDesc" ColumnName="catDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ciudades">
+            <EntityTypeMapping TypeName="ganaderiaModel.ciudade">
+              <MappingFragment StoreEntitySet="ciudades">
+                <ScalarProperty Name="ciudCod" ColumnName="ciudCod" />
+                <ScalarProperty Name="ciudNombre" ColumnName="ciudNombre" />
+                <ScalarProperty Name="depaCod" ColumnName="depaCod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clientes">
+            <EntityTypeMapping TypeName="ganaderiaModel.cliente">
+              <MappingFragment StoreEntitySet="cliente">
+                <ScalarProperty Name="clieCod" ColumnName="clieCod" />
+                <ScalarProperty Name="clieNombre" ColumnName="clieNombre" />
+                <ScalarProperty Name="clieMarca" ColumnName="clieMarca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comprasCabs">
+            <EntityTypeMapping TypeName="ganaderiaModel.comprasCab">
+              <MappingFragment StoreEntitySet="comprasCab">
+                <ScalarProperty Name="ccCod" ColumnName="ccCod" />
+                <ScalarProperty Name="provCod" ColumnName="provCod" />
+                <ScalarProperty Name="ccFch" ColumnName="ccFch" />
+                <ScalarProperty Name="estCod" ColumnName="estCod" />
+                <ScalarProperty Name="rv" ColumnName="rv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comprasDets">
+            <EntityTypeMapping TypeName="ganaderiaModel.comprasDet">
+              <MappingFragment StoreEntitySet="comprasDet">
+                <ScalarProperty Name="cdCod" ColumnName="cdCod" />
+                <ScalarProperty Name="ccCod" ColumnName="ccCod" />
+                <ScalarProperty Name="cdCantidad" ColumnName="cdCantidad" />
+                <ScalarProperty Name="cdUnitario" ColumnName="cdUnitario" />
+                <ScalarProperty Name="cdTotal" ColumnName="cdTotal" />
+                <ScalarProperty Name="rv" ColumnName="rv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="departamentos">
+            <EntityTypeMapping TypeName="ganaderiaModel.departamento">
+              <MappingFragment StoreEntitySet="departamentos">
+                <ScalarProperty Name="depaCod" ColumnName="depaCod" />
+                <ScalarProperty Name="depaNombre" ColumnName="depaNombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="establecimientoes">
+            <EntityTypeMapping TypeName="ganaderiaModel.establecimiento">
+              <MappingFragment StoreEntitySet="establecimiento">
+                <ScalarProperty Name="estCod" ColumnName="estCod" />
+                <ScalarProperty Name="estNombre" ColumnName="estNombre" />
+                <ScalarProperty Name="estBarrio" ColumnName="estBarrio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gastosCabs">
+            <EntityTypeMapping TypeName="ganaderiaModel.gastosCab">
+              <MappingFragment StoreEntitySet="gastosCab">
+                <ScalarProperty Name="gcCod" ColumnName="gcCod" />
+                <ScalarProperty Name="gcDescripcion" ColumnName="gcDescripcion" />
+                <ScalarProperty Name="gcFecha" ColumnName="gcFecha" />
+                <ScalarProperty Name="gcMonto" ColumnName="gcMonto" />
+                <ScalarProperty Name="impCod" ColumnName="impCod" />
+                <ScalarProperty Name="provCod" ColumnName="provCod" />
+                <ScalarProperty Name="catCod" ColumnName="catCod" />
+                <ScalarProperty Name="rv" ColumnName="rv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gastosDets">
+            <EntityTypeMapping TypeName="ganaderiaModel.gastosDet">
+              <MappingFragment StoreEntitySet="gastosDet">
+                <ScalarProperty Name="gdCod" ColumnName="gdCod" />
+                <ScalarProperty Name="gcCod" ColumnName="gcCod" />
+                <ScalarProperty Name="gdItem" ColumnName="gdItem" />
+                <ScalarProperty Name="gdCantidad" ColumnName="gdCantidad" />
+                <ScalarProperty Name="gdUnitario" ColumnName="gdUnitario" />
+                <ScalarProperty Name="rv" ColumnName="rv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gestacions">
+            <EntityTypeMapping TypeName="ganaderiaModel.gestacion">
+              <MappingFragment StoreEntitySet="gestacion">
+                <ScalarProperty Name="preCod" ColumnName="preCod" />
+                <ScalarProperty Name="aniCodMadre" ColumnName="aniCodMadre" />
+                <ScalarProperty Name="preFchMontura" ColumnName="preFchMontura" />
+                <ScalarProperty Name="preFchConfirma" ColumnName="preFchConfirma" />
+                <ScalarProperty Name="preFchparto" ColumnName="preFchparto" />
+                <ScalarProperty Name="preEstado" ColumnName="preEstado" />
+                <ScalarProperty Name="estCod" ColumnName="estCod" />
+                <ScalarProperty Name="aniCodPadre" ColumnName="aniCodPadre" />
+                <ScalarProperty Name="rv" ColumnName="rv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="impuestoes">
+            <EntityTypeMapping TypeName="ganaderiaModel.impuesto">
+              <MappingFragment StoreEntitySet="impuesto">
+                <ScalarProperty Name="impCod" ColumnName="impCod" />
+                <ScalarProperty Name="impDesc" ColumnName="impDesc" />
+                <ScalarProperty Name="impDivisor" ColumnName="impDivisor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nacimientoes">
+            <EntityTypeMapping TypeName="ganaderiaModel.nacimiento">
+              <MappingFragment StoreEntitySet="nacimiento">
+                <ScalarProperty Name="nacCod" ColumnName="nacCod" />
+                <ScalarProperty Name="aniCodMadre" ColumnName="aniCodMadre" />
+                <ScalarProperty Name="nacFch" ColumnName="nacFch" />
+                <ScalarProperty Name="nacSexo" ColumnName="nacSexo" />
+                <ScalarProperty Name="nacEstado" ColumnName="nacEstado" />
+                <ScalarProperty Name="aniCodCria" ColumnName="aniCodCria" />
+                <ScalarProperty Name="tsCod" ColumnName="tsCod" />
+                <ScalarProperty Name="rv" ColumnName="rv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="profesionals">
+            <EntityTypeMapping TypeName="ganaderiaModel.profesional">
+              <MappingFragment StoreEntitySet="profesional">
+                <ScalarProperty Name="profCod" ColumnName="profCod" />
+                <ScalarProperty Name="profNombre" ColumnName="profNombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="proveedors">
+            <EntityTypeMapping TypeName="ganaderiaModel.proveedor">
+              <MappingFragment StoreEntitySet="proveedor">
+                <ScalarProperty Name="provCod" ColumnName="provCod" />
+                <ScalarProperty Name="provNombre" ColumnName="provNombre" />
+                <ScalarProperty Name="provMarca" ColumnName="provMarca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="razas">
+            <EntityTypeMapping TypeName="ganaderiaModel.raza">
+              <MappingFragment StoreEntitySet="raza">
+                <ScalarProperty Name="razaCod" ColumnName="razaCod" />
+                <ScalarProperty Name="razaDesc" ColumnName="razaDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="retiroes">
+            <EntityTypeMapping TypeName="ganaderiaModel.retiro">
+              <MappingFragment StoreEntitySet="retiro">
+                <ScalarProperty Name="retiCod" ColumnName="retiCod" />
+                <ScalarProperty Name="retiNombre" ColumnName="retiNombre" />
+                <ScalarProperty Name="estCod" ColumnName="estCod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="retiroDets">
+            <EntityTypeMapping TypeName="ganaderiaModel.retiroDet">
+              <MappingFragment StoreEntitySet="retiroDet">
+                <ScalarProperty Name="retiDetCod" ColumnName="retiDetCod" />
+                <ScalarProperty Name="retiCod" ColumnName="retiCod" />
+                <ScalarProperty Name="aniCod" ColumnName="aniCod" />
+                <ScalarProperty Name="taCod" ColumnName="taCod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ganaderiaModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipoAlimentacions">
+            <EntityTypeMapping TypeName="ganaderiaModel.tipoAlimentacion">
+              <MappingFragment StoreEntitySet="tipoAlimentacion">
+                <ScalarProperty Name="taCod" ColumnName="taCod" />
+                <ScalarProperty Name="taNombre" ColumnName="taNombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipoServicios">
+            <EntityTypeMapping TypeName="ganaderiaModel.tipoServicio">
+              <MappingFragment StoreEntitySet="tipoServicio">
+                <ScalarProperty Name="tsCod" ColumnName="tsCod" />
+                <ScalarProperty Name="tsNombre" ColumnName="tsNombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipoVacunas">
+            <EntityTypeMapping TypeName="ganaderiaModel.tipoVacuna">
+              <MappingFragment StoreEntitySet="tipoVacuna">
+                <ScalarProperty Name="tvCod" ColumnName="tvCod" />
+                <ScalarProperty Name="tvNombre" ColumnName="tvNombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="ganaderiaModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="usuCod" ColumnName="usuCod" />
+                <ScalarProperty Name="usuLogin" ColumnName="usuLogin" />
+                <ScalarProperty Name="usuNombre" ColumnName="usuNombre" />
+                <ScalarProperty Name="usuPass" ColumnName="usuPass" />
+                <ScalarProperty Name="usuDescripcion" ColumnName="usuDescripcion" />
+                <ScalarProperty Name="usuRol" ColumnName="usuRol" />
+                <ScalarProperty Name="usuEmail" ColumnName="usuEmail" />
+                <ScalarProperty Name="usuFchCrea" ColumnName="usuFchCrea" />
+                <ScalarProperty Name="usuFchMod" ColumnName="usuFchMod" />
+                <ScalarProperty Name="usuActivo" ColumnName="usuActivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vacunacions">
+            <EntityTypeMapping TypeName="ganaderiaModel.vacunacion">
+              <MappingFragment StoreEntitySet="vacunacion">
+                <ScalarProperty Name="vacCod" ColumnName="vacCod" />
+                <ScalarProperty Name="vacFch" ColumnName="vacFch" />
+                <ScalarProperty Name="tvCod" ColumnName="tvCod" />
+                <ScalarProperty Name="vacDosis" ColumnName="vacDosis" />
+                <ScalarProperty Name="profCod" ColumnName="profCod" />
+                <ScalarProperty Name="aniCod" ColumnName="aniCod" />
+                <ScalarProperty Name="rv" ColumnName="rv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ventasCabs">
+            <EntityTypeMapping TypeName="ganaderiaModel.ventasCab">
+              <MappingFragment StoreEntitySet="ventasCab">
+                <ScalarProperty Name="vcCod" ColumnName="vcCod" />
+                <ScalarProperty Name="vcFch" ColumnName="vcFch" />
+                <ScalarProperty Name="clieCod" ColumnName="clieCod" />
+                <ScalarProperty Name="impCod" ColumnName="impCod" />
+                <ScalarProperty Name="estCod" ColumnName="estCod" />
+                <ScalarProperty Name="rv" ColumnName="rv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ventasDets">
+            <EntityTypeMapping TypeName="ganaderiaModel.ventasDet">
+              <MappingFragment StoreEntitySet="ventasDet">
+                <ScalarProperty Name="vdCod" ColumnName="vdCod" />
+                <ScalarProperty Name="vcCod" ColumnName="vcCod" />
+                <ScalarProperty Name="vdCantidad" ColumnName="vdCantidad" />
+                <ScalarProperty Name="vdUnitario" ColumnName="vdUnitario" />
+                <ScalarProperty Name="vdTotal" ColumnName="vdTotal" />
+                <ScalarProperty Name="vdPesoProm" ColumnName="vdPesoProm" />
+                <ScalarProperty Name="aniCod" ColumnName="aniCod" />
+                <ScalarProperty Name="rv" ColumnName="rv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vision_dispositivo">
+            <EntityTypeMapping TypeName="ganaderiaModel.vision_dispositivo">
+              <MappingFragment StoreEntitySet="vision_dispositivo">
+                <ScalarProperty Name="dispId" ColumnName="dispId" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="serie" ColumnName="serie" />
+                <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="rowversion" ColumnName="rowversion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vision_modelo">
+            <EntityTypeMapping TypeName="ganaderiaModel.vision_modelo">
+              <MappingFragment StoreEntitySet="vision_modelo">
+                <ScalarProperty Name="modId" ColumnName="modId" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="enfoque" ColumnName="enfoque" />
+                <ScalarProperty Name="hash" ColumnName="hash" />
+                <ScalarProperty Name="fechaCarga" ColumnName="fechaCarga" />
+                <ScalarProperty Name="rowversion" ColumnName="rowversion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vision_pesaje">
+            <EntityTypeMapping TypeName="ganaderiaModel.vision_pesaje">
+              <MappingFragment StoreEntitySet="vision_pesaje">
+                <ScalarProperty Name="pesId" ColumnName="pesId" />
+                <ScalarProperty Name="aniCod" ColumnName="aniCod" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="pesoKg" ColumnName="pesoKg" />
+                <ScalarProperty Name="confianza" ColumnName="confianza" />
+                <ScalarProperty Name="metodo" ColumnName="metodo" />
+                <ScalarProperty Name="dispId" ColumnName="dispId" />
+                <ScalarProperty Name="modId" ColumnName="modId" />
+                <ScalarProperty Name="imgPath" ColumnName="imgPath" />
+                <ScalarProperty Name="medidasJson" ColumnName="medidasJson" />
+                <ScalarProperty Name="notas" ColumnName="notas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

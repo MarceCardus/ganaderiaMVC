@@ -1,0 +1,356 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ganaderiaModelStoreContainer" CdmEntityContainer="ganaderiaEntities">
+    <EntitySetMapping Name="animals">
+      <EntityTypeMapping TypeName="ganaderiaModel.animal">
+        <MappingFragment StoreEntitySet="animal">
+          <ScalarProperty Name="aniCod" ColumnName="aniCod" />
+          <ScalarProperty Name="aniCaravana" ColumnName="aniCaravana" />
+          <ScalarProperty Name="razaCod" ColumnName="razaCod" />
+          <ScalarProperty Name="aniSexo" ColumnName="aniSexo" />
+          <ScalarProperty Name="aniFchNac" ColumnName="aniFchNac" />
+          <ScalarProperty Name="aniEstado" ColumnName="aniEstado" />
+          <ScalarProperty Name="aniFchIns" ColumnName="aniFchIns" />
+          <ScalarProperty Name="aniUsrIns" ColumnName="aniUsrIns" />
+          <ScalarProperty Name="aniFchUpd" ColumnName="aniFchUpd" />
+          <ScalarProperty Name="estCod" ColumnName="estCod" />
+          <ScalarProperty Name="aniUsrUpd" ColumnName="aniUsrUpd" />
+          <ScalarProperty Name="rv" ColumnName="rv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="auditorias">
+      <EntityTypeMapping TypeName="ganaderiaModel.auditoria">
+        <MappingFragment StoreEntitySet="auditoria">
+          <ScalarProperty Name="audId" ColumnName="audId" />
+          <ScalarProperty Name="audTabla" ColumnName="audTabla" />
+          <ScalarProperty Name="audAccion" ColumnName="audAccion" />
+          <ScalarProperty Name="audRegistroId" ColumnName="audRegistroId" />
+          <ScalarProperty Name="audFecha" ColumnName="audFecha" />
+          <ScalarProperty Name="audUsuario" ColumnName="audUsuario" />
+          <ScalarProperty Name="audLoginSql" ColumnName="audLoginSql" />
+          <ScalarProperty Name="audHost" ColumnName="audHost" />
+          <ScalarProperty Name="audApp" ColumnName="audApp" />
+          <ScalarProperty Name="audDetalleJson" ColumnName="audDetalleJson" />
+          <ScalarProperty Name="usuCod" ColumnName="usuCod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="barrios">
+      <EntityTypeMapping TypeName="ganaderiaModel.barrio">
+        <MappingFragment StoreEntitySet="barrios">
+          <ScalarProperty Name="barriosCod" ColumnName="barriosCod" />
+          <ScalarProperty Name="barriosNombre" ColumnName="barriosNombre" />
+          <ScalarProperty Name="ciudCod" ColumnName="ciudCod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categorias">
+      <EntityTypeMapping TypeName="ganaderiaModel.categoria">
+        <MappingFragment StoreEntitySet="categoria">
+          <ScalarProperty Name="catCod" ColumnName="catCod" />
+          <ScalarProperty Name="catDesc" ColumnName="catDesc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ciudades">
+      <EntityTypeMapping TypeName="ganaderiaModel.ciudade">
+        <MappingFragment StoreEntitySet="ciudades">
+          <ScalarProperty Name="ciudCod" ColumnName="ciudCod" />
+          <ScalarProperty Name="ciudNombre" ColumnName="ciudNombre" />
+          <ScalarProperty Name="depaCod" ColumnName="depaCod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="clientes">
+      <EntityTypeMapping TypeName="ganaderiaModel.cliente">
+        <MappingFragment StoreEntitySet="cliente">
+          <ScalarProperty Name="clieCod" ColumnName="clieCod" />
+          <ScalarProperty Name="clieNombre" ColumnName="clieNombre" />
+          <ScalarProperty Name="clieMarca" ColumnName="clieMarca" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comprasCabs">
+      <EntityTypeMapping TypeName="ganaderiaModel.comprasCab">
+        <MappingFragment StoreEntitySet="comprasCab">
+          <ScalarProperty Name="ccCod" ColumnName="ccCod" />
+          <ScalarProperty Name="provCod" ColumnName="provCod" />
+          <ScalarProperty Name="ccFch" ColumnName="ccFch" />
+          <ScalarProperty Name="estCod" ColumnName="estCod" />
+          <ScalarProperty Name="rv" ColumnName="rv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comprasDets">
+      <EntityTypeMapping TypeName="ganaderiaModel.comprasDet">
+        <MappingFragment StoreEntitySet="comprasDet">
+          <ScalarProperty Name="cdCod" ColumnName="cdCod" />
+          <ScalarProperty Name="ccCod" ColumnName="ccCod" />
+          <ScalarProperty Name="cdCantidad" ColumnName="cdCantidad" />
+          <ScalarProperty Name="cdUnitario" ColumnName="cdUnitario" />
+          <ScalarProperty Name="cdTotal" ColumnName="cdTotal" />
+          <ScalarProperty Name="rv" ColumnName="rv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="departamentos">
+      <EntityTypeMapping TypeName="ganaderiaModel.departamento">
+        <MappingFragment StoreEntitySet="departamentos">
+          <ScalarProperty Name="depaCod" ColumnName="depaCod" />
+          <ScalarProperty Name="depaNombre" ColumnName="depaNombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="establecimientoes">
+      <EntityTypeMapping TypeName="ganaderiaModel.establecimiento">
+        <MappingFragment StoreEntitySet="establecimiento">
+          <ScalarProperty Name="estCod" ColumnName="estCod" />
+          <ScalarProperty Name="estNombre" ColumnName="estNombre" />
+          <ScalarProperty Name="estBarrio" ColumnName="estBarrio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gastosCabs">
+      <EntityTypeMapping TypeName="ganaderiaModel.gastosCab">
+        <MappingFragment StoreEntitySet="gastosCab">
+          <ScalarProperty Name="gcCod" ColumnName="gcCod" />
+          <ScalarProperty Name="gcDescripcion" ColumnName="gcDescripcion" />
+          <ScalarProperty Name="gcFecha" ColumnName="gcFecha" />
+          <ScalarProperty Name="gcMonto" ColumnName="gcMonto" />
+          <ScalarProperty Name="impCod" ColumnName="impCod" />
+          <ScalarProperty Name="provCod" ColumnName="provCod" />
+          <ScalarProperty Name="catCod" ColumnName="catCod" />
+          <ScalarProperty Name="rv" ColumnName="rv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gastosDets">
+      <EntityTypeMapping TypeName="ganaderiaModel.gastosDet">
+        <MappingFragment StoreEntitySet="gastosDet">
+          <ScalarProperty Name="gdCod" ColumnName="gdCod" />
+          <ScalarProperty Name="gcCod" ColumnName="gcCod" />
+          <ScalarProperty Name="gdItem" ColumnName="gdItem" />
+          <ScalarProperty Name="gdCantidad" ColumnName="gdCantidad" />
+          <ScalarProperty Name="gdUnitario" ColumnName="gdUnitario" />
+          <ScalarProperty Name="rv" ColumnName="rv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gestacions">
+      <EntityTypeMapping TypeName="ganaderiaModel.gestacion">
+        <MappingFragment StoreEntitySet="gestacion">
+          <ScalarProperty Name="preCod" ColumnName="preCod" />
+          <ScalarProperty Name="aniCodMadre" ColumnName="aniCodMadre" />
+          <ScalarProperty Name="preFchMontura" ColumnName="preFchMontura" />
+          <ScalarProperty Name="preFchConfirma" ColumnName="preFchConfirma" />
+          <ScalarProperty Name="preFchparto" ColumnName="preFchparto" />
+          <ScalarProperty Name="preEstado" ColumnName="preEstado" />
+          <ScalarProperty Name="estCod" ColumnName="estCod" />
+          <ScalarProperty Name="aniCodPadre" ColumnName="aniCodPadre" />
+          <ScalarProperty Name="rv" ColumnName="rv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="impuestoes">
+      <EntityTypeMapping TypeName="ganaderiaModel.impuesto">
+        <MappingFragment StoreEntitySet="impuesto">
+          <ScalarProperty Name="impCod" ColumnName="impCod" />
+          <ScalarProperty Name="impDesc" ColumnName="impDesc" />
+          <ScalarProperty Name="impDivisor" ColumnName="impDivisor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nacimientoes">
+      <EntityTypeMapping TypeName="ganaderiaModel.nacimiento">
+        <MappingFragment StoreEntitySet="nacimiento">
+          <ScalarProperty Name="nacCod" ColumnName="nacCod" />
+          <ScalarProperty Name="aniCodMadre" ColumnName="aniCodMadre" />
+          <ScalarProperty Name="nacFch" ColumnName="nacFch" />
+          <ScalarProperty Name="nacSexo" ColumnName="nacSexo" />
+          <ScalarProperty Name="nacEstado" ColumnName="nacEstado" />
+          <ScalarProperty Name="aniCodCria" ColumnName="aniCodCria" />
+          <ScalarProperty Name="tsCod" ColumnName="tsCod" />
+          <ScalarProperty Name="rv" ColumnName="rv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="profesionals">
+      <EntityTypeMapping TypeName="ganaderiaModel.profesional">
+        <MappingFragment StoreEntitySet="profesional">
+          <ScalarProperty Name="profCod" ColumnName="profCod" />
+          <ScalarProperty Name="profNombre" ColumnName="profNombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="proveedors">
+      <EntityTypeMapping TypeName="ganaderiaModel.proveedor">
+        <MappingFragment StoreEntitySet="proveedor">
+          <ScalarProperty Name="provCod" ColumnName="provCod" />
+          <ScalarProperty Name="provNombre" ColumnName="provNombre" />
+          <ScalarProperty Name="provMarca" ColumnName="provMarca" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="razas">
+      <EntityTypeMapping TypeName="ganaderiaModel.raza">
+        <MappingFragment StoreEntitySet="raza">
+          <ScalarProperty Name="razaCod" ColumnName="razaCod" />
+          <ScalarProperty Name="razaDesc" ColumnName="razaDesc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="retiroes">
+      <EntityTypeMapping TypeName="ganaderiaModel.retiro">
+        <MappingFragment StoreEntitySet="retiro">
+          <ScalarProperty Name="retiCod" ColumnName="retiCod" />
+          <ScalarProperty Name="retiNombre" ColumnName="retiNombre" />
+          <ScalarProperty Name="estCod" ColumnName="estCod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="retiroDets">
+      <EntityTypeMapping TypeName="ganaderiaModel.retiroDet">
+        <MappingFragment StoreEntitySet="retiroDet">
+          <ScalarProperty Name="retiDetCod" ColumnName="retiDetCod" />
+          <ScalarProperty Name="retiCod" ColumnName="retiCod" />
+          <ScalarProperty Name="aniCod" ColumnName="aniCod" />
+          <ScalarProperty Name="taCod" ColumnName="taCod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="ganaderiaModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipoAlimentacions">
+      <EntityTypeMapping TypeName="ganaderiaModel.tipoAlimentacion">
+        <MappingFragment StoreEntitySet="tipoAlimentacion">
+          <ScalarProperty Name="taCod" ColumnName="taCod" />
+          <ScalarProperty Name="taNombre" ColumnName="taNombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipoServicios">
+      <EntityTypeMapping TypeName="ganaderiaModel.tipoServicio">
+        <MappingFragment StoreEntitySet="tipoServicio">
+          <ScalarProperty Name="tsCod" ColumnName="tsCod" />
+          <ScalarProperty Name="tsNombre" ColumnName="tsNombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipoVacunas">
+      <EntityTypeMapping TypeName="ganaderiaModel.tipoVacuna">
+        <MappingFragment StoreEntitySet="tipoVacuna">
+          <ScalarProperty Name="tvCod" ColumnName="tvCod" />
+          <ScalarProperty Name="tvNombre" ColumnName="tvNombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuarios">
+      <EntityTypeMapping TypeName="ganaderiaModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="usuCod" ColumnName="usuCod" />
+          <ScalarProperty Name="usuLogin" ColumnName="usuLogin" />
+          <ScalarProperty Name="usuNombre" ColumnName="usuNombre" />
+          <ScalarProperty Name="usuPass" ColumnName="usuPass" />
+          <ScalarProperty Name="usuDescripcion" ColumnName="usuDescripcion" />
+          <ScalarProperty Name="usuRol" ColumnName="usuRol" />
+          <ScalarProperty Name="usuEmail" ColumnName="usuEmail" />
+          <ScalarProperty Name="usuFchCrea" ColumnName="usuFchCrea" />
+          <ScalarProperty Name="usuFchMod" ColumnName="usuFchMod" />
+          <ScalarProperty Name="usuActivo" ColumnName="usuActivo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vacunacions">
+      <EntityTypeMapping TypeName="ganaderiaModel.vacunacion">
+        <MappingFragment StoreEntitySet="vacunacion">
+          <ScalarProperty Name="vacCod" ColumnName="vacCod" />
+          <ScalarProperty Name="vacFch" ColumnName="vacFch" />
+          <ScalarProperty Name="tvCod" ColumnName="tvCod" />
+          <ScalarProperty Name="vacDosis" ColumnName="vacDosis" />
+          <ScalarProperty Name="profCod" ColumnName="profCod" />
+          <ScalarProperty Name="aniCod" ColumnName="aniCod" />
+          <ScalarProperty Name="rv" ColumnName="rv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ventasCabs">
+      <EntityTypeMapping TypeName="ganaderiaModel.ventasCab">
+        <MappingFragment StoreEntitySet="ventasCab">
+          <ScalarProperty Name="vcCod" ColumnName="vcCod" />
+          <ScalarProperty Name="vcFch" ColumnName="vcFch" />
+          <ScalarProperty Name="clieCod" ColumnName="clieCod" />
+          <ScalarProperty Name="impCod" ColumnName="impCod" />
+          <ScalarProperty Name="estCod" ColumnName="estCod" />
+          <ScalarProperty Name="rv" ColumnName="rv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ventasDets">
+      <EntityTypeMapping TypeName="ganaderiaModel.ventasDet">
+        <MappingFragment StoreEntitySet="ventasDet">
+          <ScalarProperty Name="vdCod" ColumnName="vdCod" />
+          <ScalarProperty Name="vcCod" ColumnName="vcCod" />
+          <ScalarProperty Name="vdCantidad" ColumnName="vdCantidad" />
+          <ScalarProperty Name="vdUnitario" ColumnName="vdUnitario" />
+          <ScalarProperty Name="vdTotal" ColumnName="vdTotal" />
+          <ScalarProperty Name="vdPesoProm" ColumnName="vdPesoProm" />
+          <ScalarProperty Name="aniCod" ColumnName="aniCod" />
+          <ScalarProperty Name="rv" ColumnName="rv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vision_dispositivo">
+      <EntityTypeMapping TypeName="ganaderiaModel.vision_dispositivo">
+        <MappingFragment StoreEntitySet="vision_dispositivo">
+          <ScalarProperty Name="dispId" ColumnName="dispId" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="serie" ColumnName="serie" />
+          <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="rowversion" ColumnName="rowversion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vision_modelo">
+      <EntityTypeMapping TypeName="ganaderiaModel.vision_modelo">
+        <MappingFragment StoreEntitySet="vision_modelo">
+          <ScalarProperty Name="modId" ColumnName="modId" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="enfoque" ColumnName="enfoque" />
+          <ScalarProperty Name="hash" ColumnName="hash" />
+          <ScalarProperty Name="fechaCarga" ColumnName="fechaCarga" />
+          <ScalarProperty Name="rowversion" ColumnName="rowversion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vision_pesaje">
+      <EntityTypeMapping TypeName="ganaderiaModel.vision_pesaje">
+        <MappingFragment StoreEntitySet="vision_pesaje">
+          <ScalarProperty Name="pesId" ColumnName="pesId" />
+          <ScalarProperty Name="aniCod" ColumnName="aniCod" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="pesoKg" ColumnName="pesoKg" />
+          <ScalarProperty Name="confianza" ColumnName="confianza" />
+          <ScalarProperty Name="metodo" ColumnName="metodo" />
+          <ScalarProperty Name="dispId" ColumnName="dispId" />
+          <ScalarProperty Name="modId" ColumnName="modId" />
+          <ScalarProperty Name="imgPath" ColumnName="imgPath" />
+          <ScalarProperty Name="medidasJson" ColumnName="medidasJson" />
+          <ScalarProperty Name="notas" ColumnName="notas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

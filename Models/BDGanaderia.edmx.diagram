@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2e9bdae0a49d41778b866c6e6310ebc9" Name="Diagram1">
+        <EntityTypeShape EntityType="ganaderiaModel.animal" Width="1.5" PointX="9.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.auditoria" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.barrio" Width="1.5" PointX="5.25" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.categoria" Width="1.5" PointX="10.5" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.ciudade" Width="1.5" PointX="3" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.cliente" Width="1.5" PointX="10.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.comprasCab" Width="1.5" PointX="12.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.comprasDet" Width="1.5" PointX="15" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.departamento" Width="1.5" PointX="0.75" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.establecimiento" Width="1.5" PointX="7.5" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.gastosCab" Width="1.5" PointX="12.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.gastosDet" Width="1.5" PointX="15" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.gestacion" Width="1.5" PointX="12" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.impuesto" Width="1.5" PointX="10.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.nacimiento" Width="1.5" PointX="15" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.profesional" Width="1.5" PointX="15.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.proveedor" Width="1.5" PointX="10.5" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.raza" Width="1.5" PointX="7.5" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.retiro" Width="1.5" PointX="9.75" PointY="26.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.retiroDet" Width="1.5" PointX="15" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.tipoAlimentacion" Width="1.5" PointX="12.75" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.tipoServicio" Width="1.5" PointX="12.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.tipoVacuna" Width="1.5" PointX="15.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.usuario" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.vacunacion" Width="1.5" PointX="18" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.ventasCab" Width="1.5" PointX="12.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.ventasDet" Width="1.5" PointX="18" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.vision_dispositivo" Width="1.5" PointX="15.75" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.vision_modelo" Width="1.5" PointX="15.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.vision_pesaje" Width="1.5" PointX="18" PointY="21.5" IsExpanded="true" />
+        <AssociationConnector Association="ganaderiaModel.FK_animal_establecimiento" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_animal_raza" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_gestacion_animal" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_gestacion_animal1" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_nacimiento_animal2" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_nacimiento_animal3" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_pesaje_animal" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_retiroDet_animal" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_vacunacion_animal" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_ventasDet_animal" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_auditoria_usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_barrios_ciudades" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_establecimiento_barrios" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_gastosCab_categoria" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_ciudades_departamentos" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_ventasCab_cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_comprasCab_establecimiento" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_comprasCab_proveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_comprasDet_comprasCab" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_gestacion_establecimiento" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_retiro_establecimiento" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_ventasCab_establecimiento" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_gastosCab_impuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_gastosCab_proveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_gastosDet_gastosCab" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_ventasCab_impuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_nacimiento_tipoServicio" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_vacunacion_profesional" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_retiroDet_retiro" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_retiroDet_tipoAlimentacion" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_vacunacion_tipoVacuna" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_ventasDet_ventasCab" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_pesaje_disp" ManuallyRouted="false" />
+        <AssociationConnector Association="ganaderiaModel.FK_pesaje_mod" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
