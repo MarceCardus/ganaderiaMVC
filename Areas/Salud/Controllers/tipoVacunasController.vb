@@ -9,97 +9,92 @@ Imports System.Web.Mvc
 Imports ganaderiaMVC
 
 Namespace Controllers
-    Public Class barriosController
+    Public Class tipoVacunasController
         Inherits System.Web.Mvc.Controller
 
         Private db As New ganaderiaEntities
 
-        ' GET: barrios
+        ' GET: tipoVacunas
         Function Index() As ActionResult
-            Dim barrios = db.barrios.Include(Function(b) b.ciudade)
-            Return View(barrios.ToList())
+            Return View(db.tipoVacunas.ToList())
         End Function
 
-        ' GET: barrios/Details/5
+        ' GET: tipoVacunas/Details/5
         Function Details(ByVal id As Integer?) As ActionResult
             If IsNothing(id) Then
                 Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
             End If
-            Dim barrio As barrio = db.barrios.Find(id)
-            If IsNothing(barrio) Then
+            Dim tipoVacuna As tipoVacuna = db.tipoVacunas.Find(id)
+            If IsNothing(tipoVacuna) Then
                 Return HttpNotFound()
             End If
-            Return View(barrio)
+            Return View(tipoVacuna)
         End Function
 
-        ' GET: barrios/Create
+        ' GET: tipoVacunas/Create
         Function Create() As ActionResult
-            ViewBag.ciudCod = New SelectList(db.ciudades, "ciudCod", "ciudNombre")
             Return View()
         End Function
 
-        ' POST: barrios/Create
+        ' POST: tipoVacunas/Create
         'Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         'más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         <HttpPost()>
         <ValidateAntiForgeryToken()>
-        Function Create(<Bind(Include:="barriosCod,barriosNombre,ciudCod")> ByVal barrio As barrio) As ActionResult
+        Function Create(<Bind(Include:="tvCod,tvNombre")> ByVal tipoVacuna As tipoVacuna) As ActionResult
             If ModelState.IsValid Then
-                db.barrios.Add(barrio)
+                db.tipoVacunas.Add(tipoVacuna)
                 db.SaveChanges()
                 Return RedirectToAction("Index")
             End If
-            ViewBag.ciudCod = New SelectList(db.ciudades, "ciudCod", "ciudNombre", barrio.ciudCod)
-            Return View(barrio)
+            Return View(tipoVacuna)
         End Function
 
-        ' GET: barrios/Edit/5
+        ' GET: tipoVacunas/Edit/5
         Function Edit(ByVal id As Integer?) As ActionResult
             If IsNothing(id) Then
                 Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
             End If
-            Dim barrio As barrio = db.barrios.Find(id)
-            If IsNothing(barrio) Then
+            Dim tipoVacuna As tipoVacuna = db.tipoVacunas.Find(id)
+            If IsNothing(tipoVacuna) Then
                 Return HttpNotFound()
             End If
-            ViewBag.ciudCod = New SelectList(db.ciudades, "ciudCod", "ciudNombre", barrio.ciudCod)
-            Return View(barrio)
+            Return View(tipoVacuna)
         End Function
 
-        ' POST: barrios/Edit/5
+        ' POST: tipoVacunas/Edit/5
         'Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         'más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         <HttpPost()>
         <ValidateAntiForgeryToken()>
-        Function Edit(<Bind(Include:="barriosCod,barriosNombre,ciudCod")> ByVal barrio As barrio) As ActionResult
+        Function Edit(<Bind(Include:="tvCod,tvNombre")> ByVal tipoVacuna As tipoVacuna) As ActionResult
             If ModelState.IsValid Then
-                db.Entry(barrio).State = EntityState.Modified
+                db.Entry(tipoVacuna).State = EntityState.Modified
                 db.SaveChanges()
                 Return RedirectToAction("Index")
             End If
-            ViewBag.ciudCod = New SelectList(db.ciudades, "ciudCod", "ciudNombre", barrio.ciudCod)
-            Return View(barrio)
+            Return View(tipoVacuna)
         End Function
 
-        ' GET: barrios/Delete/5
+        ' GET: tipoVacunas/Delete/5
         Function Delete(ByVal id As Integer?) As ActionResult
             If IsNothing(id) Then
                 Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
             End If
-            Dim barrio As barrio = db.barrios.Find(id)
-            If IsNothing(barrio) Then
+            Dim tipoVacuna As tipoVacuna = db.tipoVacunas.Find(id)
+            If IsNothing(tipoVacuna) Then
                 Return HttpNotFound()
             End If
-            Return View(barrio)
+            Return View(tipoVacuna)
         End Function
 
-        ' POST: barrios/Delete/5
+        ' POST: tipoVacunas/Delete/5
         <HttpPost()>
         <ActionName("Delete")>
         <ValidateAntiForgeryToken()>
         Function DeleteConfirmed(ByVal id As Integer) As ActionResult
-            Dim barrio As barrio = db.barrios.Find(id)
-            db.barrios.Remove(barrio)
+            Dim tipoVacuna As tipoVacuna = db.tipoVacunas.Find(id)
+            db.tipoVacunas.Remove(tipoVacuna)
             db.SaveChanges()
             Return RedirectToAction("Index")
         End Function

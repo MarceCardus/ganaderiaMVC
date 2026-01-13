@@ -9,97 +9,92 @@ Imports System.Web.Mvc
 Imports ganaderiaMVC
 
 Namespace Controllers
-    Public Class ciudadesController
+    Public Class vision_modeloController
         Inherits System.Web.Mvc.Controller
 
         Private db As New ganaderiaEntities
 
-        ' GET: ciudades
+        ' GET: vision_modelo
         Function Index() As ActionResult
-            Dim ciudades = db.ciudades.Include(Function(c) c.departamento)
-            Return View(ciudades.ToList())
+            Return View(db.vision_modelo.ToList())
         End Function
 
-        ' GET: ciudades/Details/5
+        ' GET: vision_modelo/Details/5
         Function Details(ByVal id As Integer?) As ActionResult
             If IsNothing(id) Then
                 Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
             End If
-            Dim ciudade As ciudade = db.ciudades.Find(id)
-            If IsNothing(ciudade) Then
+            Dim vision_modelo As vision_modelo = db.vision_modelo.Find(id)
+            If IsNothing(vision_modelo) Then
                 Return HttpNotFound()
             End If
-            Return View(ciudade)
+            Return View(vision_modelo)
         End Function
 
-        ' GET: ciudades/Create
+        ' GET: vision_modelo/Create
         Function Create() As ActionResult
-            ViewBag.depaCod = New SelectList(db.departamentos, "depaCod", "depaNombre")
             Return View()
         End Function
 
-        ' POST: ciudades/Create
+        ' POST: vision_modelo/Create
         'Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         'más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         <HttpPost()>
         <ValidateAntiForgeryToken()>
-        Function Create(<Bind(Include:="ciudCod,ciudNombre,depaCod")> ByVal ciudade As ciudade) As ActionResult
+        Function Create(<Bind(Include:="modId,nombre,version,enfoque,hash,fechaCarga,rowversion")> ByVal vision_modelo As vision_modelo) As ActionResult
             If ModelState.IsValid Then
-                db.ciudades.Add(ciudade)
+                db.vision_modelo.Add(vision_modelo)
                 db.SaveChanges()
                 Return RedirectToAction("Index")
             End If
-            ViewBag.depaCod = New SelectList(db.departamentos, "depaCod", "depaNombre", ciudade.depaCod)
-            Return View(ciudade)
+            Return View(vision_modelo)
         End Function
 
-        ' GET: ciudades/Edit/5
+        ' GET: vision_modelo/Edit/5
         Function Edit(ByVal id As Integer?) As ActionResult
             If IsNothing(id) Then
                 Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
             End If
-            Dim ciudade As ciudade = db.ciudades.Find(id)
-            If IsNothing(ciudade) Then
+            Dim vision_modelo As vision_modelo = db.vision_modelo.Find(id)
+            If IsNothing(vision_modelo) Then
                 Return HttpNotFound()
             End If
-            ViewBag.depaCod = New SelectList(db.departamentos, "depaCod", "depaNombre", ciudade.depaCod)
-            Return View(ciudade)
+            Return View(vision_modelo)
         End Function
 
-        ' POST: ciudades/Edit/5
+        ' POST: vision_modelo/Edit/5
         'Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         'más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         <HttpPost()>
         <ValidateAntiForgeryToken()>
-        Function Edit(<Bind(Include:="ciudCod,ciudNombre,depaCod")> ByVal ciudade As ciudade) As ActionResult
+        Function Edit(<Bind(Include:="modId,nombre,version,enfoque,hash,fechaCarga,rowversion")> ByVal vision_modelo As vision_modelo) As ActionResult
             If ModelState.IsValid Then
-                db.Entry(ciudade).State = EntityState.Modified
+                db.Entry(vision_modelo).State = EntityState.Modified
                 db.SaveChanges()
                 Return RedirectToAction("Index")
             End If
-            ViewBag.depaCod = New SelectList(db.departamentos, "depaCod", "depaNombre", ciudade.depaCod)
-            Return View(ciudade)
+            Return View(vision_modelo)
         End Function
 
-        ' GET: ciudades/Delete/5
+        ' GET: vision_modelo/Delete/5
         Function Delete(ByVal id As Integer?) As ActionResult
             If IsNothing(id) Then
                 Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
             End If
-            Dim ciudade As ciudade = db.ciudades.Find(id)
-            If IsNothing(ciudade) Then
+            Dim vision_modelo As vision_modelo = db.vision_modelo.Find(id)
+            If IsNothing(vision_modelo) Then
                 Return HttpNotFound()
             End If
-            Return View(ciudade)
+            Return View(vision_modelo)
         End Function
 
-        ' POST: ciudades/Delete/5
+        ' POST: vision_modelo/Delete/5
         <HttpPost()>
         <ActionName("Delete")>
         <ValidateAntiForgeryToken()>
         Function DeleteConfirmed(ByVal id As Integer) As ActionResult
-            Dim ciudade As ciudade = db.ciudades.Find(id)
-            db.ciudades.Remove(ciudade)
+            Dim vision_modelo As vision_modelo = db.vision_modelo.Find(id)
+            db.vision_modelo.Remove(vision_modelo)
             db.SaveChanges()
             Return RedirectToAction("Index")
         End Function

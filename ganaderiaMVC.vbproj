@@ -150,21 +150,40 @@
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\FilterConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
-    <Compile Include="Controllers\barriosController.vb" />
-    <Compile Include="Controllers\ciudadesController.vb" />
-    <Compile Include="Controllers\departamentoesController.vb" />
-    <Compile Include="Controllers\establecimientoesController.vb" />
+    <Compile Include="Areas\Animales\ConfiguracionAreaRegistration.vb" />
+    <Compile Include="Areas\Configuraciones\ConfiguracionAreaRegistration.vb" />
+    <Compile Include="Areas\Configuraciones\Controllers\barriosController.vb" />
+    <Compile Include="Areas\Configuraciones\Controllers\ciudadesController.vb" />
+    <Compile Include="Areas\Configuraciones\Controllers\departamentoesController.vb" />
+    <Compile Include="Areas\Configuraciones\Controllers\establecimientoesController.vb" />
+    <Compile Include="Areas\Configuraciones\Controllers\categoriasController.vb" />
+    <Compile Include="Areas\Configuraciones\Controllers\impuestoesController.vb" />
+    <Compile Include="Areas\Configuraciones\Controllers\tipoAlimentacionsController.vb" />
+    <Compile Include="Areas\Configuraciones\Controllers\tipoServiciosController.vb" />
+    <Compile Include="Areas\Reproducciones\ConfiguracionAreaRegistration.vb" />
+    <Compile Include="Areas\Salud\Controllers\tipoVacunasController.vb" />
+    <Compile Include="Areas\Reproducciones\Controllers\gestacionsController.vb" />
+    <Compile Include="Areas\Reproducciones\Controllers\nacimientoesController.vb" />
+    <Compile Include="Areas\Salud\Controllers\profesionalsController.vb" />
+    <Compile Include="Areas\Salud\Controllers\vacunacionsController.vb" />
+    <Compile Include="Areas\Seguridad\Controllers\auditoriasController.vb" />
+    <Compile Include="Areas\Seguridad\Controllers\usuariosController.vb" />
+    <Compile Include="Areas\Vision\Controllers\vision_dispositivoController.vb" />
+    <Compile Include="Areas\Vision\Controllers\vision_modeloController.vb" />
+    <Compile Include="Areas\Vision\Controllers\vision_pesajeController.vb" />
+    <Compile Include="Areas\Animales\Controllers\animalsController.vb" />
+    <Compile Include="Controllers\DashboardController.vb" />
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\animal.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\auditoria.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\barrio.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BDGanaderia.Context.vb">
       <AutoGen>True</AutoGen>
@@ -182,88 +201,88 @@
       <DependentUpon>BDGanaderia.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\categoria.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ciudade.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\cliente.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\comprasCab.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\comprasDet.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\departamento.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\establecimiento.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\gastosCab.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\gastosDet.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\gestacion.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\impuesto.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\nacimiento.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\profesional.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\proveedor.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\raza.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\retiro.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\retiroDet.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tipoAlimentacion.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tipoServicio.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tipoVacuna.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\usuario.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vacunacion.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ventasCab.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ventasDet.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vision_dispositivo.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vision_modelo.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vision_pesaje.vb">
-      <DependentUpon>BDGanaderia.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -281,6 +300,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Controllers\HomeController.vb" />
+    <Compile Include="ViewModels\DashboardVM.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -330,6 +350,23 @@
     <Content Include="Models\BDGanaderia.edmx.diagram">
       <DependentUpon>BDGanaderia.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Configuraciones\Views\Web.config" />
+    <Content Include="Areas\Animales\Views\Web.config" />
+    <None Include="Areas\Animales\Views\Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Areas\Animales\Views\Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="Areas\Reproducciones\Views\Web.config" />
+    <Content Include="Areas\Animales\Views\_ViewStart.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\_ViewStart.vbhtml" />
+    <Content Include="Areas\Movimientos\Views\_ViewStart.vbhtml" />
+    <Content Include="Areas\Reportes\Views\_ViewStart.vbhtml" />
+    <Content Include="Areas\Reproducciones\Views\_ViewStart.vbhtml" />
+    <Content Include="Areas\Salud\Views\_ViewStart.vbhtml" />
+    <Content Include="Areas\Seguridad\Views\_ViewStart.vbhtml" />
+    <Content Include="Areas\Vision\Views\_ViewStart.vbhtml" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -350,6 +387,16 @@
       <DependentUpon>BDGanaderia.edmx</DependentUpon>
       <LastGenOutput>BDGanaderia.vb</LastGenOutput>
     </Content>
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.vb</LastGenOutput>
+      <DependentUpon>BDGanaderia.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.vb</LastGenOutput>
+      <DependentUpon>BDGanaderia.edmx</DependentUpon>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -369,26 +416,102 @@
     <Content Include="Scripts\jquery-3.7.1.slim.min.js" />
     <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.1.min.map" />
-    <Content Include="Views\departamentoes\Create.vbhtml" />
-    <Content Include="Views\departamentoes\Delete.vbhtml" />
-    <Content Include="Views\departamentoes\Details.vbhtml" />
-    <Content Include="Views\departamentoes\Edit.vbhtml" />
-    <Content Include="Views\departamentoes\Index.vbhtml" />
-    <Content Include="Views\ciudades\Create.vbhtml" />
-    <Content Include="Views\ciudades\Delete.vbhtml" />
-    <Content Include="Views\ciudades\Details.vbhtml" />
-    <Content Include="Views\ciudades\Edit.vbhtml" />
-    <Content Include="Views\ciudades\Index.vbhtml" />
-    <Content Include="Views\barrios\Create.vbhtml" />
-    <Content Include="Views\barrios\Delete.vbhtml" />
-    <Content Include="Views\barrios\Details.vbhtml" />
-    <Content Include="Views\barrios\Edit.vbhtml" />
-    <Content Include="Views\barrios\Index.vbhtml" />
-    <Content Include="Views\establecimientoes\Create.vbhtml" />
-    <Content Include="Views\establecimientoes\Delete.vbhtml" />
-    <Content Include="Views\establecimientoes\Details.vbhtml" />
-    <Content Include="Views\establecimientoes\Edit.vbhtml" />
-    <Content Include="Views\establecimientoes\Index.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\departamentoes\Create.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\departamentoes\Delete.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\departamentoes\Details.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\departamentoes\Edit.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\departamentoes\Index.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\ciudades\Create.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\ciudades\Delete.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\ciudades\Details.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\ciudades\Edit.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\ciudades\Index.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\barrios\Create.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\barrios\Delete.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\barrios\Details.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\barrios\Edit.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\barrios\Index.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\establecimientoes\Create.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\establecimientoes\Delete.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\establecimientoes\Details.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\establecimientoes\Edit.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\establecimientoes\Index.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\categorias\Create.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\categorias\Delete.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\categorias\Details.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\categorias\Edit.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\categorias\Index.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\impuestoes\Create.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\impuestoes\Delete.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\impuestoes\Details.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\impuestoes\Edit.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\impuestoes\Index.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\tipoAlimentacions\Create.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\tipoAlimentacions\Delete.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\tipoAlimentacions\Details.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\tipoAlimentacions\Edit.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\tipoAlimentacions\Index.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\tipoServicios\Create.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\tipoServicios\Delete.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\tipoServicios\Details.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\tipoServicios\Edit.vbhtml" />
+    <Content Include="Areas\Configuraciones\Views\tipoServicios\Index.vbhtml" />
+    <Content Include="Areas\Salud\Views\tipoVacunas\Create.vbhtml" />
+    <Content Include="Areas\Salud\Views\tipoVacunas\Delete.vbhtml" />
+    <Content Include="Areas\Salud\Views\tipoVacunas\Details.vbhtml" />
+    <Content Include="Areas\Salud\Views\tipoVacunas\Edit.vbhtml" />
+    <Content Include="Areas\Salud\Views\tipoVacunas\Index.vbhtml" />
+    <Content Include="Areas\Reproducciones\Views\gestacions\Create.vbhtml" />
+    <Content Include="Areas\Reproducciones\Views\gestacions\Delete.vbhtml" />
+    <Content Include="Areas\Reproducciones\Views\gestacions\Details.vbhtml" />
+    <Content Include="Areas\Reproducciones\Views\gestacions\Edit.vbhtml" />
+    <Content Include="Areas\Reproducciones\Views\gestacions\Index.vbhtml" />
+    <Content Include="Areas\Reproducciones\Views\nacimientoes\Create.vbhtml" />
+    <Content Include="Areas\Reproducciones\Views\nacimientoes\Delete.vbhtml" />
+    <Content Include="Areas\Reproducciones\Views\nacimientoes\Details.vbhtml" />
+    <Content Include="Areas\Reproducciones\Views\nacimientoes\Edit.vbhtml" />
+    <Content Include="Areas\Reproducciones\Views\nacimientoes\Index.vbhtml" />
+    <Content Include="Areas\Salud\Views\vacunacions\Create.vbhtml" />
+    <Content Include="Areas\Salud\Views\vacunacions\Delete.vbhtml" />
+    <Content Include="Areas\Salud\Views\vacunacions\Details.vbhtml" />
+    <Content Include="Areas\Salud\Views\vacunacions\Edit.vbhtml" />
+    <Content Include="Areas\Salud\Views\vacunacions\Index.vbhtml" />
+    <Content Include="Areas\Salud\Views\profesionals\Create.vbhtml" />
+    <Content Include="Areas\Salud\Views\profesionals\Delete.vbhtml" />
+    <Content Include="Areas\Salud\Views\profesionals\Details.vbhtml" />
+    <Content Include="Areas\Salud\Views\profesionals\Edit.vbhtml" />
+    <Content Include="Areas\Salud\Views\profesionals\Index.vbhtml" />
+    <Content Include="Areas\Seguridad\Views\usuarios\Create.vbhtml" />
+    <Content Include="Areas\Seguridad\Views\usuarios\Delete.vbhtml" />
+    <Content Include="Areas\Seguridad\Views\usuarios\Details.vbhtml" />
+    <Content Include="Areas\Seguridad\Views\usuarios\Edit.vbhtml" />
+    <Content Include="Areas\Seguridad\Views\usuarios\Index.vbhtml" />
+    <Content Include="Areas\Seguridad\Views\auditorias\Create.vbhtml" />
+    <Content Include="Areas\Seguridad\Views\auditorias\Delete.vbhtml" />
+    <Content Include="Areas\Seguridad\Views\auditorias\Details.vbhtml" />
+    <Content Include="Areas\Seguridad\Views\auditorias\Edit.vbhtml" />
+    <Content Include="Areas\Seguridad\Views\auditorias\Index.vbhtml" />
+    <Content Include="Areas\Vision\Views\vision_dispositivo\Create.vbhtml" />
+    <Content Include="Areas\Vision\Views\vision_dispositivo\Delete.vbhtml" />
+    <Content Include="Areas\Vision\Views\vision_dispositivo\Details.vbhtml" />
+    <Content Include="Areas\Vision\Views\vision_dispositivo\Edit.vbhtml" />
+    <Content Include="Areas\Vision\Views\vision_dispositivo\Index.vbhtml" />
+    <Content Include="Areas\Vision\Views\vision_modelo\Create.vbhtml" />
+    <Content Include="Areas\Vision\Views\vision_modelo\Delete.vbhtml" />
+    <Content Include="Areas\Vision\Views\vision_modelo\Details.vbhtml" />
+    <Content Include="Areas\Vision\Views\vision_modelo\Edit.vbhtml" />
+    <Content Include="Areas\Vision\Views\vision_modelo\Index.vbhtml" />
+    <Content Include="Areas\Vision\Views\vision_pesaje\Create.vbhtml" />
+    <Content Include="Areas\Vision\Views\vision_pesaje\Delete.vbhtml" />
+    <Content Include="Areas\Vision\Views\vision_pesaje\Details.vbhtml" />
+    <Content Include="Areas\Vision\Views\vision_pesaje\Edit.vbhtml" />
+    <Content Include="Areas\Vision\Views\vision_pesaje\Index.vbhtml" />
+    <Content Include="Areas\Animales\Views\animals\Create.vbhtml" />
+    <Content Include="Areas\Animales\Views\animals\Delete.vbhtml" />
+    <Content Include="Areas\Animales\Views\animals\Details.vbhtml" />
+    <Content Include="Areas\Animales\Views\animals\Edit.vbhtml" />
+    <Content Include="Areas\Animales\Views\animals\Index.vbhtml" />
+    <Content Include="Views\Dashboard\Index.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -417,6 +540,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Movimientos\Controllers\" />
+    <Folder Include="Areas\Reportes\Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
