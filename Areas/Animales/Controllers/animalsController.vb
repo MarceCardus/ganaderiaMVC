@@ -1,118 +1,123 @@
 ﻿Imports System
-Imports System.Collections.Generic
-Imports System.Data
 Imports System.Data.Entity
-Imports System.Linq
 Imports System.Net
-Imports System.Web
 Imports System.Web.Mvc
 Imports ganaderiaMVC
 
 Namespace Areas.Animales.Controllers
     Public Class animalsController
-        Inherits System.Web.Mvc.Controller
+        Inherits Controller
 
         Private db As New ganaderiaEntities
 
-        ' GET: animals
+        ' GET: Animales/animals
         Function Index() As ActionResult
             Dim animals = db.animals.Include(Function(a) a.establecimiento).Include(Function(a) a.raza)
             Return View(animals.ToList())
         End Function
 
-        ' GET: animals/Details/5
+        ' GET: Animales/animals/Details/5
         Function Details(ByVal id As Integer?) As ActionResult
-            If IsNothing(id) Then
-                Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
-            End If
-            Dim animal As animal = db.animals.Find(id)
-            If IsNothing(animal) Then
-                Return HttpNotFound()
-            End If
+            If Not id.HasValue Then Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
+
+            Dim animal = db.animals.Include(Function(a) a.establecimiento).Include(Function(a) a.raza).
+                                 FirstOrDefault(Function(a) a.aniCod = id.Value)
+
+            If IsNothing(animal) Then Return HttpNotFound()
             Return View(animal)
         End Function
 
-        ' GET: animals/Create
+        ' GET: Animales/animals/Create
         Function Create() As ActionResult
-            ViewBag.estCod = New SelectList(db.establecimientoes, "estCod", "estNombre")
-            ViewBag.razaCod = New SelectList(db.razas, "razaCod", "razaDesc")
+            CargarCombos(Nothing)
             Return View()
         End Function
 
-        ' POST: animals/Create
-        'Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        'más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        ' POST: Animales/animals/Create
         <HttpPost()>
         <ValidateAntiForgeryToken()>
-        Function Create(<Bind(Include:="aniCod,aniCaravana,razaCod,aniSexo,aniFchNac,aniEstado,aniFchIns,aniUsrIns,aniFchUpd,estCod,aniUsrUpd,rv")> ByVal animal As animal) As ActionResult
+        Function Create(<Bind(Include:="aniCaravana,razaCod,aniSexo,aniFchNac,aniEstado,estCod,rv")> ByVal animal As animal) As ActionResult
             If ModelState.IsValid Then
                 db.animals.Add(animal)
                 db.SaveChanges()
                 Return RedirectToAction("Index")
             End If
-            ViewBag.estCod = New SelectList(db.establecimientoes, "estCod", "estNombre", animal.estCod)
-            ViewBag.razaCod = New SelectList(db.razas, "razaCod", "razaDesc", animal.razaCod)
+
+            CargarCombos(animal)
             Return View(animal)
         End Function
 
-        ' GET: animals/Edit/5
+        ' GET: Animales/animals/Edit/5
         Function Edit(ByVal id As Integer?) As ActionResult
-            If IsNothing(id) Then
-                Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
-            End If
-            Dim animal As animal = db.animals.Find(id)
-            If IsNothing(animal) Then
-                Return HttpNotFound()
-            End If
-            ViewBag.estCod = New SelectList(db.establecimientoes, "estCod", "estNombre", animal.estCod)
-            ViewBag.razaCod = New SelectList(db.razas, "razaCod", "razaDesc", animal.razaCod)
+            If Not id.HasValue Then Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
+
+            Dim animal = db.animals.Find(id.Value)
+            If IsNothing(animal) Then Return HttpNotFound()
+
+            CargarCombos(animal)
             Return View(animal)
         End Function
 
-        ' POST: animals/Edit/5
-        'Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        'más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        ' POST: Animales/animals/Edit/5
         <HttpPost()>
         <ValidateAntiForgeryToken()>
-        Function Edit(<Bind(Include:="aniCod,aniCaravana,razaCod,aniSexo,aniFchNac,aniEstado,aniFchIns,aniUsrIns,aniFchUpd,estCod,aniUsrUpd,rv")> ByVal animal As animal) As ActionResult
-            If ModelState.IsValid Then
-                db.Entry(animal).State = EntityState.Modified
-                db.SaveChanges()
-                Return RedirectToAction("Index")
+        Function Edit(<Bind(Include:="aniCod,aniCaravana,razaCod,aniSexo,aniFchNac,aniEstado,estCod,rv")> ByVal animal As animal) As ActionResult
+            If Not ModelState.IsValid Then
+                CargarCombos(animal)
+                Return View(animal)
             End If
-            ViewBag.estCod = New SelectList(db.establecimientoes, "estCod", "estNombre", animal.estCod)
-            ViewBag.razaCod = New SelectList(db.razas, "razaCod", "razaDesc", animal.razaCod)
-            Return View(animal)
-        End Function
 
-        ' GET: animals/Delete/5
-        Function Delete(ByVal id As Integer?) As ActionResult
-            If IsNothing(id) Then
-                Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
-            End If
-            Dim animal As animal = db.animals.Find(id)
-            If IsNothing(animal) Then
-                Return HttpNotFound()
-            End If
-            Return View(animal)
-        End Function
+            ' IMPORTANTE: no usar EntityState.Modified con auditoría por triggers/campos que no vienen
+            Dim dbAnimal = db.animals.Find(animal.aniCod)
+            If IsNothing(dbAnimal) Then Return HttpNotFound()
 
-        ' POST: animals/Delete/5
-        <HttpPost()>
-        <ActionName("Delete")>
-        <ValidateAntiForgeryToken()>
-        Function DeleteConfirmed(ByVal id As Integer) As ActionResult
-            Dim animal As animal = db.animals.Find(id)
-            db.animals.Remove(animal)
+            ' Actualizamos SOLO los campos editables
+            dbAnimal.aniCaravana = animal.aniCaravana
+            dbAnimal.razaCod = animal.razaCod
+            dbAnimal.aniSexo = animal.aniSexo
+            dbAnimal.aniFchNac = animal.aniFchNac
+            dbAnimal.aniEstado = animal.aniEstado
+            dbAnimal.estCod = animal.estCod
+
             db.SaveChanges()
             Return RedirectToAction("Index")
         End Function
 
-        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-            If (disposing) Then
-                db.Dispose()
+        ' GET: Animales/animals/Delete/5
+        Function Delete(ByVal id As Integer?) As ActionResult
+            If Not id.HasValue Then Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
+
+            Dim animal = db.animals.Find(id.Value)
+            If IsNothing(animal) Then Return HttpNotFound()
+
+            Return View(animal)
+        End Function
+
+        ' POST: Animales/animals/Delete/5
+        <HttpPost()>
+        <ActionName("Delete")>
+        <ValidateAntiForgeryToken()>
+        Function DeleteConfirmed(ByVal id As Integer) As ActionResult
+            Dim animal = db.animals.Find(id)
+            If Not IsNothing(animal) Then
+                db.animals.Remove(animal)
+                db.SaveChanges()
             End If
+            Return RedirectToAction("Index")
+        End Function
+
+        Private Sub CargarCombos(ByVal animal As animal)
+            Dim estSel = If(IsNothing(animal), Nothing, CType(animal.estCod, Object))
+            Dim razaSel = If(IsNothing(animal), Nothing, CType(animal.razaCod, Object))
+
+            ViewBag.estCod = New SelectList(db.establecimientoes, "estCod", "estNombre", estSel)
+            ViewBag.razaCod = New SelectList(db.razas, "razaCod", "razaDesc", razaSel)
+        End Sub
+
+        Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+            If disposing Then db.Dispose()
             MyBase.Dispose(disposing)
         End Sub
+
     End Class
 End Namespace

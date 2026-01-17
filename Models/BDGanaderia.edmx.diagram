@@ -35,7 +35,7 @@
         <EntityTypeShape EntityType="ganaderiaModel.ventasDet" Width="1.5" PointX="18" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ganaderiaModel.vision_dispositivo" Width="1.5" PointX="15.75" PointY="27.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ganaderiaModel.vision_modelo" Width="1.5" PointX="15.75" PointY="30.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ganaderiaModel.vision_pesaje" Width="1.5" PointX="18" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ganaderiaModel.vision_pesaje" Width="1.5" PointX="16.875" PointY="20.375" IsExpanded="true" />
         <AssociationConnector Association="ganaderiaModel.FK_animal_establecimiento" ManuallyRouted="false" />
         <AssociationConnector Association="ganaderiaModel.FK_animal_raza" ManuallyRouted="false" />
         <AssociationConnector Association="ganaderiaModel.FK_gestacion_animal" ManuallyRouted="false" />

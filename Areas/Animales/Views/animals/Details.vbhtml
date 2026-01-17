@@ -1,105 +1,69 @@
 ﻿@ModelType ganaderiaMVC.Animal
+
 @Code
-    ViewData("Title") = "Details"
+    ViewData("Title") = "Detalle de animal"
 End Code
 
-<h2>Details</h2>
-
-<div>
-    <h4>animal</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.aniCaravana)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.aniCaravana)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.aniSexo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.aniSexo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.aniFchNac)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.aniFchNac)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.aniEstado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.aniEstado)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.aniFchIns)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.aniFchIns)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.aniUsrIns)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.aniUsrIns)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.aniFchUpd)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.aniFchUpd)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.aniUsrUpd)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.aniUsrUpd)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.rv)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.rv)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.establecimiento.estNombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.establecimiento.estNombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.raza.razaDesc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.raza.razaDesc)
-        </dd>
-
-    </dl>
+<div class="d-flex" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+       <div>
+        @Html.ActionLink("Editar", "Edit", New With {.id = Model.aniCod}, New With {.class = "btn btn-warning"})
+        @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn btn-default", .style = "margin-left:5px;"})
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", New With {.id = Model.aniCod}) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="row">
+    <div class="col-md-7 col-lg-6">
+
+        <h4 style="margin-top:0;">Datos</h4>
+        <dl class="dl-horizontal">
+            <dt>Caravana</dt>
+            <dd>@Html.DisplayFor(Function(m) m.aniCaravana)</dd>
+
+            <dt>Sexo</dt>
+            <dd>@Html.DisplayFor(Function(m) m.aniSexo)</dd>
+
+            <dt>Fecha Nac.</dt>
+            <dd>
+                @If Model.aniFchNac.HasValue Then
+                    @Model.aniFchNac.Value.ToString("dd/MM/yyyy")
+                End If
+            </dd>
+
+            <dt>Estado</dt>
+            <dd>@Html.DisplayFor(Function(m) m.aniEstado)</dd>
+
+            <dt>Establecimiento</dt>
+            <dd>@Html.DisplayFor(Function(m) m.establecimiento.estNombre)</dd>
+
+            <dt>Raza</dt>
+            <dd>@Html.DisplayFor(Function(m) m.raza.razaDesc)</dd>
+        </dl>
+
+        <hr />
+
+        <h4>Auditoría</h4>
+        <dl class="dl-horizontal">
+            <dt>Creado</dt>
+            <dd>
+                @Html.DisplayFor(Function(m) m.aniFchIns) -
+                @Html.DisplayFor(Function(m) m.aniUsrIns)
+            </dd>
+
+            <dt>Actualizado</dt>
+            <dd>
+                @Html.DisplayFor(Function(m) m.aniFchUpd) -
+                @Html.DisplayFor(Function(m) m.aniUsrUpd)
+            </dd>
+        </dl>
+
+        @* Si querés mostrar rv (rowversion) solo para debug, descomentá *@
+        @*
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>RV</dt>
+                <dd>@Html.DisplayFor(Function(m) m.rv)</dd>
+            </dl>
+        *@
+
+    </div>
+</div>

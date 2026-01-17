@@ -1,109 +1,85 @@
 ﻿@ModelType ganaderiaMVC.Animal
+
 @Code
-    ViewData("Title") = "Create"
+    ViewData("Title") = "Nuevo animal"
 End Code
 
-<h2>Create</h2>
-
-@Using (Html.BeginForm()) 
-    @Html.AntiForgeryToken()
-    
-    @<div class="form-horizontal">
-        <h4>animal</h4>
-        <hr />
-        @Html.ValidationSummary(True, "", New With { .class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(Function(model) model.aniCaravana, htmlAttributes:= New With { .class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(Function(model) model.aniCaravana, New With { .htmlAttributes = New With { .class = "form-control" } })
-                @Html.ValidationMessageFor(Function(model) model.aniCaravana, "", New With { .class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(Function(model) model.razaCod, "razaCod", htmlAttributes:= New With { .class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("razaCod", Nothing, htmlAttributes:= New With { .class = "form-control" })
-                @Html.ValidationMessageFor(Function(model) model.razaCod, "", New With { .class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(Function(model) model.aniSexo, htmlAttributes:= New With { .class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(Function(model) model.aniSexo, New With { .htmlAttributes = New With { .class = "form-control" } })
-                @Html.ValidationMessageFor(Function(model) model.aniSexo, "", New With { .class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(Function(model) model.aniFchNac, htmlAttributes:= New With { .class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(Function(model) model.aniFchNac, New With { .htmlAttributes = New With { .class = "form-control" } })
-                @Html.ValidationMessageFor(Function(model) model.aniFchNac, "", New With { .class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(Function(model) model.aniEstado, htmlAttributes:= New With { .class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(Function(model) model.aniEstado, New With { .htmlAttributes = New With { .class = "form-control" } })
-                @Html.ValidationMessageFor(Function(model) model.aniEstado, "", New With { .class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(Function(model) model.aniFchIns, htmlAttributes:= New With { .class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(Function(model) model.aniFchIns, New With { .htmlAttributes = New With { .class = "form-control" } })
-                @Html.ValidationMessageFor(Function(model) model.aniFchIns, "", New With { .class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(Function(model) model.aniUsrIns, htmlAttributes:= New With { .class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(Function(model) model.aniUsrIns, New With { .htmlAttributes = New With { .class = "form-control" } })
-                @Html.ValidationMessageFor(Function(model) model.aniUsrIns, "", New With { .class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(Function(model) model.aniFchUpd, htmlAttributes:= New With { .class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(Function(model) model.aniFchUpd, New With { .htmlAttributes = New With { .class = "form-control" } })
-                @Html.ValidationMessageFor(Function(model) model.aniFchUpd, "", New With { .class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(Function(model) model.estCod, "estCod", htmlAttributes:= New With { .class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("estCod", Nothing, htmlAttributes:= New With { .class = "form-control" })
-                @Html.ValidationMessageFor(Function(model) model.estCod, "", New With { .class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(Function(model) model.aniUsrUpd, htmlAttributes:= New With { .class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(Function(model) model.aniUsrUpd, New With { .htmlAttributes = New With { .class = "form-control" } })
-                @Html.ValidationMessageFor(Function(model) model.aniUsrUpd, "", New With { .class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-End Using
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="d-flex" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+      @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn btn-default"})
 </div>
 
-@Section Scripts 
+<div class="row">
+    <div class="col-md-7 col-lg-6">
+        @* <- acá controlás el ancho *@
+
+        @Using Html.BeginForm()
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(True, "", New With {.class = "text-danger"})
+
+            @<div class="form-horizontal">
+
+                <div class="form-group">
+                    @Html.LabelFor(Function(m) m.aniCaravana, htmlAttributes:=New With {.class = "control-label col-md-3"})
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(Function(m) m.aniCaravana, New With {.class = "form-control"})
+                        @Html.ValidationMessageFor(Function(m) m.aniCaravana, "", New With {.class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(Function(m) m.razaCod, "Raza", htmlAttributes:=New With {.class = "control-label col-md-3"})
+                    <div class="col-md-9">
+                        @Html.DropDownList("razaCod", CType(ViewBag.razaCod, SelectList), "-- Seleccione --", New With {.class = "form-control"})
+                        @Html.ValidationMessageFor(Function(m) m.razaCod, "", New With {.class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(Function(m) m.estCod, "Establecimiento", htmlAttributes:=New With {.class = "control-label col-md-3"})
+                    <div class="col-md-9">
+                        @Html.DropDownList("estCod", CType(ViewBag.estCod, SelectList), "-- Seleccione --", New With {.class = "form-control"})
+                        @Html.ValidationMessageFor(Function(m) m.estCod, "", New With {.class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(Function(m) m.aniSexo, htmlAttributes:=New With {.class = "control-label col-md-3"})
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(Function(m) m.aniSexo, New With {.class = "form-control", .placeholder = "M / H"})
+                        @Html.ValidationMessageFor(Function(m) m.aniSexo, "", New With {.class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(Function(m) m.aniFchNac, "Fecha Nac.", htmlAttributes:=New With {.class = "control-label col-md-3"})
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(Function(m) m.aniFchNac, New With {.class = "form-control", .type = "date"})
+                        @Html.ValidationMessageFor(Function(m) m.aniFchNac, "", New With {.class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(Function(m) m.aniEstado, htmlAttributes:=New With {.class = "control-label col-md-3"})
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(Function(m) m.aniEstado, New With {.class = "form-control", .placeholder = "A / V / M ..."})
+                        @Html.ValidationMessageFor(Function(m) m.aniEstado, "", New With {.class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        @Html.ActionLink("Cancelar", "Index", Nothing, New With {.class = "btn btn-default", .style = "margin-left:5px;"})
+                    </div>
+                </div>
+
+            </div>
+        End Using
+
+    </div>
+</div>
+
+@Section Scripts
     @Scripts.Render("~/bundles/jqueryval")
 End Section

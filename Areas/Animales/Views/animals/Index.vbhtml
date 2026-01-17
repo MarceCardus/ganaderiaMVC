@@ -1,92 +1,52 @@
 ﻿@ModelType IEnumerable(Of ganaderiaMVC.Animal)
+
 @Code
-ViewData("Title") = "Index"
+    ViewData("Title") = "Animales"
 End Code
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-md-10 col-lg-9">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(Function(model) model.aniCaravana)
-        </th>
-        <th>
-            @Html.DisplayNameFor(Function(model) model.aniSexo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(Function(model) model.aniFchNac)
-        </th>
-        <th>
-            @Html.DisplayNameFor(Function(model) model.aniEstado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(Function(model) model.aniFchIns)
-        </th>
-        <th>
-            @Html.DisplayNameFor(Function(model) model.aniUsrIns)
-        </th>
-        <th>
-            @Html.DisplayNameFor(Function(model) model.aniFchUpd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(Function(model) model.aniUsrUpd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(Function(model) model.rv)
-        </th>
-        <th>
-            @Html.DisplayNameFor(Function(model) model.establecimiento.estNombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(Function(model) model.raza.razaDesc)
-        </th>
-        <th></th>
-    </tr>
+        <div class="d-flex" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+            @Html.ActionLink("Nuevo", "Create", Nothing, New With {.class = "btn btn-primary"})
+        </div>
 
-@For Each item In Model
-    @<tr>
-        <td>
-            @Html.DisplayFor(Function(modelItem) item.aniCaravana)
-        </td>
-        <td>
-            @Html.DisplayFor(Function(modelItem) item.aniSexo)
-        </td>
-        <td>
-            @Html.DisplayFor(Function(modelItem) item.aniFchNac)
-        </td>
-        <td>
-            @Html.DisplayFor(Function(modelItem) item.aniEstado)
-        </td>
-        <td>
-            @Html.DisplayFor(Function(modelItem) item.aniFchIns)
-        </td>
-        <td>
-            @Html.DisplayFor(Function(modelItem) item.aniUsrIns)
-        </td>
-        <td>
-            @Html.DisplayFor(Function(modelItem) item.aniFchUpd)
-        </td>
-        <td>
-            @Html.DisplayFor(Function(modelItem) item.aniUsrUpd)
-        </td>
-        <td>
-            @Html.DisplayFor(Function(modelItem) item.rv)
-        </td>
-        <td>
-            @Html.DisplayFor(Function(modelItem) item.establecimiento.estNombre)
-        </td>
-        <td>
-            @Html.DisplayFor(Function(modelItem) item.raza.razaDesc)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", New With {.id = item.aniCod }) |
-            @Html.ActionLink("Details", "Details", New With {.id = item.aniCod }) |
-            @Html.ActionLink("Delete", "Delete", New With {.id = item.aniCod })
-        </td>
-    </tr>
-Next
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Caravana</th>
+                    <th>Sexo</th>
+                    <th>F. Nac.</th>
+                    <th>Estado</th>
+                    <th>Establecimiento</th>
+                    <th>Raza</th>
+                    <th style="width:220px;"></th>
+                </tr>
+            </thead>
 
-</table>
+            <tbody>
+                @For Each item In Model
+                    @<tr>
+                        <td>@Html.DisplayFor(Function(m) item.aniCaravana)</td>
+                        <td>@Html.DisplayFor(Function(m) item.aniSexo)</td>
+                        <td>
+                            @If item.aniFchNac.HasValue Then
+                                @item.aniFchNac.Value.ToString("dd/MM/yyyy")
+                            End If
+                        </td>
+                        <td>@Html.DisplayFor(Function(m) item.aniEstado)</td>
+                        <td>@Html.DisplayFor(Function(m) item.establecimiento.estNombre)</td>
+                        <td>@Html.DisplayFor(Function(m) item.raza.razaDesc)</td>
+
+                        <td class="text-right">
+                            @Html.ActionLink("Editar", "Edit", New With {.id = item.aniCod}, New With {.class = "btn btn-sm btn-warning"})
+                            @Html.ActionLink("Ver", "Details", New With {.id = item.aniCod}, New With {.class = "btn btn-sm btn-info"})
+                            @Html.ActionLink("Eliminar", "Delete", New With {.id = item.aniCod}, New With {.class = "btn btn-sm btn-danger"})
+                        </td>
+                    </tr>
+                Next
+            </tbody>
+        </table>
+
+    </div>
+</div>
