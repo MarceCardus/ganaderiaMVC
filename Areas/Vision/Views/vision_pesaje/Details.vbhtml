@@ -1,97 +1,65 @@
 ﻿@ModelType ganaderiaMVC.vision_pesaje
 @Code
-    ViewData("Title") = "Details"
+    ViewData("Title") = "Detalle Pesaje"
 End Code
 
-<h2>Details</h2>
 
-<div>
-    <h4>vision_pesaje</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.fecha)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(Function(model) model.fecha)
-        </dd>
+<dl class="dl-horizontal">
+    <dt>ID</dt>
+    <dd>@Model.pesId</dd>
 
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.pesoKg)
-        </dt>
+    <dt>Animal</dt>
+    <dd>@(If(Model.animal IsNot Nothing, Model.animal.aniCaravana, Model.aniCod.ToString()))</dd>
 
-        <dd>
-            @Html.DisplayFor(Function(model) model.pesoKg)
-        </dd>
+    <dt>Fecha</dt>
+    <dd>@Model.fecha.ToString("dd/MM/yyyy HH:mm")</dd>
 
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.confianza)
-        </dt>
+    <dt>Peso (Kg)</dt>
+    <dd>@String.Format("{0:N2}", Model.pesoKg)</dd>
 
-        <dd>
-            @Html.DisplayFor(Function(model) model.confianza)
-        </dd>
+    <dt>Método</dt>
+    <dd>@Model.metodo</dd>
 
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.metodo)
-        </dt>
+    <dt>Confianza</dt>
+    <dd>
+        @If Model.confianza.HasValue Then
+            @String.Format("{0:N2}%", Model.confianza.Value)
+        Else
+            @<text>-</text>
+        End If
+    </dd>
 
-        <dd>
-            @Html.DisplayFor(Function(model) model.metodo)
-        </dd>
+    <dt>Dispositivo</dt>
+    <dd>@(If(Model.vision_dispositivo IsNot Nothing, Model.vision_dispositivo.nombre, ""))</dd>
 
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.imgPath)
-        </dt>
+    <dt>Modelo</dt>
+    <dd>@(If(Model.vision_modelo IsNot Nothing, Model.vision_modelo.nombre, ""))</dd>
 
-        <dd>
-            @Html.DisplayFor(Function(model) model.imgPath)
-        </dd>
+    <dt>Imagen</dt>
+    <dd>
+        @If Not String.IsNullOrWhiteSpace(Model.imgPath) Then
+            @<text>
+                <div>
+                    <img src="@Url.Content(Model.imgPath)" style="max-width:420px; border:1px solid #ddd; padding:4px;" />
+                    <div><a href="@Url.Content(Model.imgPath)" target="_blank">Abrir imagen</a></div>
+                </div>
+            </text>
+        Else
+            @<text>-</text>
+        End If
+    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.medidasJson)
-        </dt>
+    <dt>Medidas JSON</dt>
+    <dd>
+        <pre style="white-space:pre-wrap;">@Model.medidasJson</pre>
+    </dd>
 
-        <dd>
-            @Html.DisplayFor(Function(model) model.medidasJson)
-        </dd>
+    <dt>Notas</dt>
+    <dd>@Model.notas</dd>
+</dl>
 
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.notas)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.notas)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.animal.aniCaravana)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.animal.aniCaravana)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.vision_dispositivo.nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.vision_dispositivo.nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.vision_modelo.nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.vision_modelo.nombre)
-        </dd>
-
-    </dl>
-</div>
 <p>
-    @Html.ActionLink("Edit", "Edit", New With { .id = Model.pesId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", New With {.id = Model.pesId, .area = "Vision"}, New With {.class = "btn btn-primary"})
+    @Html.ActionLink("Volver", "Index", New With {.area = "Vision"}, New With {.class = "btn btn-default"})
 </p>

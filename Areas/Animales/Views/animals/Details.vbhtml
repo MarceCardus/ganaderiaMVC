@@ -20,7 +20,13 @@ End Code
             <dd>@Html.DisplayFor(Function(m) m.aniCaravana)</dd>
 
             <dt>Sexo</dt>
-            <dd>@Html.DisplayFor(Function(m) m.aniSexo)</dd>
+            <dd>
+                @Select Case (If(Model.aniSexo, "").Trim().ToUpper())
+                    Case "M" :@:Macho
+                                        Case "H" : @:Hembra
+                                        Case Else : @:-
+                                    End Select
+            </dd>
 
             <dt>Fecha Nac.</dt>
             <dd>
@@ -30,7 +36,14 @@ End Code
             </dd>
 
             <dt>Estado</dt>
-            <dd>@Html.DisplayFor(Function(m) m.aniEstado)</dd>
+            <dd>
+                @Select Case (If(Model.aniEstado, "").Trim().ToUpper())
+                    Case "A" :@:Activo
+                                        Case "V" : @:Vendido
+                                                            Case "M" : @:Muerto
+                                                            Case Else : @:-
+                                                        End Select
+            </dd>
 
             <dt>Establecimiento</dt>
             <dd>@Html.DisplayFor(Function(m) m.establecimiento.estNombre)</dd>

@@ -104,6 +104,16 @@ End Code
                                     <i class="fa fa-circle-o"></i> Establecimientos
                                 </a>
                             </li>
+                            <li>
+                                <a href="@Url.Action("Index", "vision_dispositivo", New With {.area = "Vision"})">
+                                    <i class="fa fa-circle-o"></i> Dispositivos
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "vision_modelo", New With {.area = "Vision"})">
+                                    <i class="fa fa-circle-o"></i> Modelos
+                                </a>
+                            </li>
                         </ul>
                     </li>
 
@@ -123,6 +133,11 @@ End Code
                             <li>
                                 <a href="@Url.Action("Index","animals", New With {.area="Animales"})">
                                     <i class="fa fa-circle-o"></i> Animales
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "vision_pesaje", New With {.area = "Vision"})">
+                                    <i class="fa fa-circle-o"></i> Pesaje
                                 </a>
                             </li>
                         </ul>

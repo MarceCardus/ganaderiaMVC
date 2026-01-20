@@ -5,7 +5,6 @@
 End Code
 
 <div class="d-flex" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-    <h2 style="margin:0;">@ViewData("Title")</h2>
     @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn btn-default"})
 </div>
 
@@ -32,7 +31,7 @@ End Code
                 <div class="form-group">
                     @Html.LabelFor(Function(m) m.razaCod, "Raza", htmlAttributes:=New With {.class = "control-label col-md-3"})
                     <div class="col-md-9">
-                        @Html.DropDownList("razaCod", CType(ViewBag.razaCod, SelectList), "-- Seleccione --", New With {.class = "form-control"})
+                        @Html.DropDownListFor(Function(m) m.razaCod, Nothing, "-- Seleccione --", New With {.class = "form-control"})
                         @Html.ValidationMessageFor(Function(m) m.razaCod, "", New With {.class = "text-danger"})
                     </div>
                 </div>
@@ -40,7 +39,7 @@ End Code
                 <div class="form-group">
                     @Html.LabelFor(Function(m) m.estCod, "Establecimiento", htmlAttributes:=New With {.class = "control-label col-md-3"})
                     <div class="col-md-9">
-                        @Html.DropDownList("estCod", CType(ViewBag.estCod, SelectList), "-- Seleccione --", New With {.class = "form-control"})
+                        @Html.DropDownListFor(Function(m) m.estCod, Nothing, "-- Seleccione --", New With {.class = "form-control"})
                         @Html.ValidationMessageFor(Function(m) m.estCod, "", New With {.class = "text-danger"})
                     </div>
                 </div>
@@ -48,24 +47,22 @@ End Code
                 <div class="form-group">
                     @Html.LabelFor(Function(m) m.aniSexo, htmlAttributes:=New With {.class = "control-label col-md-3"})
                     <div class="col-md-9">
-                        @Html.TextBoxFor(Function(m) m.aniSexo, New With {.class = "form-control", .placeholder = "M / H"})
-                        @Html.ValidationMessageFor(Function(m) m.aniSexo, "", New With {.class = "text-danger"})
+                        @Html.DropDownListFor(Function(m) m.aniSexo, Nothing, "-- Seleccione --", New With {.class = "form-control"})
                     </div>
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(Function(m) m.aniFchNac, "Fecha Nac.", htmlAttributes:=New With {.class = "control-label col-md-3"})
                     <div class="col-md-9">
-                        @Html.TextBoxFor(Function(m) m.aniFchNac, New With {.class = "form-control", .type = "date"})
-                        @Html.ValidationMessageFor(Function(m) m.aniFchNac, "", New With {.class = "text-danger"})
+                        @Html.TextBoxFor(Function(m) m.aniFchNac, "{0:yyyy-MM-dd}",
+                        New With {.class = "form-control", .type = "date"})
                     </div>
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(Function(m) m.aniEstado, htmlAttributes:=New With {.class = "control-label col-md-3"})
                     <div class="col-md-9">
-                        @Html.TextBoxFor(Function(m) m.aniEstado, New With {.class = "form-control", .placeholder = "A / V / M ..."})
-                        @Html.ValidationMessageFor(Function(m) m.aniEstado, "", New With {.class = "text-danger"})
+                        @Html.DropDownListFor(Function(m) m.aniEstado, Nothing, "-- Seleccione --", New With {.class = "form-control"})
                     </div>
                 </div>
 

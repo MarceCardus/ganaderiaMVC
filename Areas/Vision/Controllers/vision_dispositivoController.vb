@@ -8,7 +8,7 @@ Imports System.Web
 Imports System.Web.Mvc
 Imports ganaderiaMVC
 
-Namespace Controllers
+Namespace Areas.Vision.Controllers
     Public Class vision_dispositivoController
         Inherits System.Web.Mvc.Controller
 

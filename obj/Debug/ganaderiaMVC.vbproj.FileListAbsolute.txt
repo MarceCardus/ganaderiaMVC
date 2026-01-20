@@ -1,3 +1,7 @@
+C:\Users\Marcelo Cardus\source\repos\ganaderiaMVC\obj\Debug\ganaderiaMVC.vbproj.AssemblyReference.cache
+C:\Users\Marcelo Cardus\source\repos\ganaderiaMVC\obj\Debug\ganaderiaMVC.Resources.resources
+C:\Users\Marcelo Cardus\source\repos\ganaderiaMVC\obj\Debug\ganaderiaMVC.vbproj.GenerateResource.cache
+C:\Users\Marcelo Cardus\source\repos\ganaderiaMVC\obj\Debug\ganaderiaMVC.vbproj.CoreCompileInputs.cache
 C:\Users\Marcelo Cardus\source\repos\ganaderiaMVC\bin\ganaderiaMVC.dll.config
 C:\Users\Marcelo Cardus\source\repos\ganaderiaMVC\bin\ganaderiaMVC.dll
 C:\Users\Marcelo Cardus\source\repos\ganaderiaMVC\bin\ganaderiaMVC.pdb
@@ -66,10 +70,6 @@ C:\Users\Marcelo Cardus\source\repos\ganaderiaMVC\bin\es\System.Web.WebPages.res
 C:\Users\Marcelo Cardus\source\repos\ganaderiaMVC\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Marcelo Cardus\source\repos\ganaderiaMVC\bin\es\System.Web.WebPages.Razor.resources.dll
 C:\Users\Marcelo Cardus\source\repos\ganaderiaMVC\bin\es\System.Web.Optimization.resources.dll
-C:\Users\Marcelo Cardus\source\repos\ganaderiaMVC\obj\Debug\ganaderiaMVC.vbproj.AssemblyReference.cache
-C:\Users\Marcelo Cardus\source\repos\ganaderiaMVC\obj\Debug\ganaderiaMVC.Resources.resources
-C:\Users\Marcelo Cardus\source\repos\ganaderiaMVC\obj\Debug\ganaderiaMVC.vbproj.GenerateResource.cache
-C:\Users\Marcelo Cardus\source\repos\ganaderiaMVC\obj\Debug\ganaderiaMVC.vbproj.CoreCompileInputs.cache
 C:\Users\Marcelo Cardus\source\repos\ganaderiaMVC\obj\Debug\ganaderi.93FB438A.Up2Date
 C:\Users\Marcelo Cardus\source\repos\ganaderiaMVC\obj\Debug\ganaderiaMVC.dll
 C:\Users\Marcelo Cardus\source\repos\ganaderiaMVC\obj\Debug\ganaderiaMVC.xml

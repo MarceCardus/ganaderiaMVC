@@ -30,6 +30,8 @@
                             <li>@Html.ActionLink("Ciudades", "Index", "ciudades", New With {.area = "Configuraciones"}, New With {.class = "dropdown-item"})</li>
                             <li>@Html.ActionLink("Barrios", "Index", "barrios", New With {.area = "Configuraciones"}, New With {.class = "dropdown-item"})</li>
                             <li>@Html.ActionLink("Establecimientos", "Index", "establecimientoes", New With {.area = "Configuraciones"}, New With {.class = "dropdown-item"})</li>
+                            <li>@Html.ActionLink("Dispositivos", "Index", "vision_dispositivo", New With {.area = "Vision"}, New With {.class = "dropdown-item"})</li>
+                            <li>@Html.ActionLink("Modelos", "Index", "vision_modelo", New With {.area = "Vision"}, New With {.class = "dropdown-item"})</li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -41,6 +43,7 @@
                             <li>@Html.ActionLink("Gestación", "Index", "gestacions", New With {.area = "Reproducciones"}, New With {.class = "dropdown-item"})</li>
                             <li>@Html.ActionLink("Nacimientos", "Index", "nacimientoes", New With {.area = "Reproducciones"}, New With {.class = "dropdown-item"})</li>
                             <li>@Html.ActionLink("Vacunación", "Index", "vacunacions", New With {.area = "Reproducciones"}, New With {.class = "dropdown-item"})</li>
+                            <li>@Html.ActionLink("Pesaje", "Index", "vision_pesaje", New With {.area = "Vision"}, New With {.class = "dropdown-item"})</li>
                         </ul>
                     </li>
                 </ul>

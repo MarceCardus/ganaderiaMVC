@@ -46,7 +46,10 @@ End Code
                 <div class="form-group">
                     @Html.LabelFor(Function(m) m.aniSexo, htmlAttributes:=New With {.class = "control-label col-md-3"})
                     <div class="col-md-9">
-                        @Html.TextBoxFor(Function(m) m.aniSexo, New With {.class = "form-control", .placeholder = "M / H"})
+                        @Html.DropDownListFor(Function(m) m.aniSexo,
+                     CType(ViewBag.aniSexo, IEnumerable(Of SelectListItem)),
+                     "-- Seleccione --",
+                     New With {.class = "form-control"})
                         @Html.ValidationMessageFor(Function(m) m.aniSexo, "", New With {.class = "text-danger"})
                     </div>
                 </div>
@@ -54,7 +57,8 @@ End Code
                 <div class="form-group">
                     @Html.LabelFor(Function(m) m.aniFchNac, "Fecha Nac.", htmlAttributes:=New With {.class = "control-label col-md-3"})
                     <div class="col-md-9">
-                        @Html.TextBoxFor(Function(m) m.aniFchNac, New With {.class = "form-control", .type = "date"})
+                        @Html.TextBoxFor(Function(m) m.aniFchNac, "{0:yyyy-MM-dd}",
+                     New With {.class = "form-control", .type = "date"})
                         @Html.ValidationMessageFor(Function(m) m.aniFchNac, "", New With {.class = "text-danger"})
                     </div>
                 </div>
@@ -62,8 +66,8 @@ End Code
                 <div class="form-group">
                     @Html.LabelFor(Function(m) m.aniEstado, htmlAttributes:=New With {.class = "control-label col-md-3"})
                     <div class="col-md-9">
-                        @Html.TextBoxFor(Function(m) m.aniEstado, New With {.class = "form-control", .placeholder = "A / V / M ..."})
-                        @Html.ValidationMessageFor(Function(m) m.aniEstado, "", New With {.class = "text-danger"})
+                        @Html.HiddenFor(Function(m) m.aniEstado)
+                        <input class="form-control" value="Activo (A)" disabled="disabled" />
                     </div>
                 </div>
 

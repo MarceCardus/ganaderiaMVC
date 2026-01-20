@@ -169,6 +169,7 @@
     <Compile Include="Areas\Salud\Controllers\vacunacionsController.vb" />
     <Compile Include="Areas\Seguridad\Controllers\auditoriasController.vb" />
     <Compile Include="Areas\Seguridad\Controllers\usuariosController.vb" />
+    <Compile Include="Areas\Vision\ConfiguracionAreaRegistration.vb" />
     <Compile Include="Areas\Vision\Controllers\vision_dispositivoController.vb" />
     <Compile Include="Areas\Vision\Controllers\vision_modeloController.vb" />
     <Compile Include="Areas\Vision\Controllers\vision_pesajeController.vb" />
@@ -234,6 +235,7 @@
     <Compile Include="Models\impuesto.vb">
       <DependentUpon>BDGanaderia.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Metadata\AnimalMeta.vb" />
     <Compile Include="Models\nacimiento.vb">
       <DependentUpon>BDGanaderia.tt</DependentUpon>
     </Compile>
@@ -2315,6 +2317,14 @@
     <Content Include="Content\adminlte\jquery\src\.eslintrc.json" />
     <Content Include="Content\adminlte\plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="Content\adminlte\plugins\input-mask\phone-codes\phone-codes.json" />
+    <Content Include="Areas\Vision\Views\Web.config" />
+    <Content Include="Areas\Vision\Views\vision_pesaje\_Form.vbhtml" />
+    <None Include="Areas\Vision\Views\Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Areas\Vision\Views\Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

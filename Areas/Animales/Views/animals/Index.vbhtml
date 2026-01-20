@@ -28,13 +28,26 @@ End Code
                 @For Each item In Model
                     @<tr>
                         <td>@Html.DisplayFor(Function(m) item.aniCaravana)</td>
-                        <td>@Html.DisplayFor(Function(m) item.aniSexo)</td>
+                        <td>
+                            @Select Case (If(item.aniSexo, "").Trim().ToUpper())
+                                Case "M" :@:Macho
+                                                        Case "H" : @:Hembra
+                                                        Case Else : @:-
+                                                    End Select
+                        </td>
                         <td>
                             @If item.aniFchNac.HasValue Then
                                 @item.aniFchNac.Value.ToString("dd/MM/yyyy")
                             End If
                         </td>
-                        <td>@Html.DisplayFor(Function(m) item.aniEstado)</td>
+                        <td>
+                            @Select Case (If(item.aniEstado, "").Trim().ToUpper())
+                                Case "A" :@:Activo
+                                                        Case "V" : @:Vendido
+                                                                                Case "M" : @:Muerto
+                                                                                Case Else : @:-
+                                                                            End Select
+                        </td>
                         <td>@Html.DisplayFor(Function(m) item.establecimiento.estNombre)</td>
                         <td>@Html.DisplayFor(Function(m) item.raza.razaDesc)</td>
 

@@ -1,102 +1,35 @@
 ﻿@ModelType ganaderiaMVC.vision_pesaje
 @Code
-    ViewData("Title") = "Delete"
+    ViewData("Title") = "Eliminar Pesaje"
 End Code
 
-<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>vision_pesaje</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.fecha)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(Function(model) model.fecha)
-        </dd>
+<h4>¿Seguro que querés eliminar este registro?</h4>
 
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.pesoKg)
-        </dt>
+<dl class="dl-horizontal">
+    <dt>ID</dt>
+    <dd>@Model.pesId</dd>
 
-        <dd>
-            @Html.DisplayFor(Function(model) model.pesoKg)
-        </dd>
+    <dt>Animal</dt>
+    <dd>@(If(Model.animal IsNot Nothing, Model.animal.aniCaravana, Model.aniCod.ToString()))</dd>
 
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.confianza)
-        </dt>
+    <dt>Fecha</dt>
+    <dd>@Model.fecha.ToString("dd/MM/yyyy HH:mm")</dd>
 
-        <dd>
-            @Html.DisplayFor(Function(model) model.confianza)
-        </dd>
+    <dt>Peso (Kg)</dt>
+    <dd>@String.Format("{0:N2}", Model.pesoKg)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.metodo)
-        </dt>
+    <dt>Método</dt>
+    <dd>@Model.metodo</dd>
+</dl>
 
-        <dd>
-            @Html.DisplayFor(Function(model) model.metodo)
-        </dd>
+@Using Html.BeginForm()
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(Function(m) m.pesId)
 
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.imgPath)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.imgPath)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.medidasJson)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.medidasJson)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.notas)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.notas)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.animal.aniCaravana)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.animal.aniCaravana)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.vision_dispositivo.nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.vision_dispositivo.nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.vision_modelo.nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.vision_modelo.nombre)
-        </dd>
-
-    </dl>
-    @Using (Html.BeginForm())
-        @Html.AntiForgeryToken()
-
-        @<div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    End Using
-</div>
+    @<p>
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        @Html.ActionLink("Cancelar", "Index", New With {.area = "Vision"}, New With {.class = "btn btn-default"})
+    </p>
+End Using

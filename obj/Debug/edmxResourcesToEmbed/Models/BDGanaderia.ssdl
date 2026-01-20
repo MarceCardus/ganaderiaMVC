@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="aniCod" />
     </Key>
-    <Property Name="aniCod" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="aniCod" Type="int" Nullable="false" StoreGeneratedPattern="None" />
     <Property Name="aniCaravana" Type="varchar" MaxLength="20" />
     <Property Name="razaCod" Type="int" />
     <Property Name="aniSexo" Type="char" MaxLength="1" />
